@@ -1,5 +1,7 @@
 package scripts.api.script;
 
+import org.tribot.script.sdk.Log;
+
 /* Written by IvanEOD 6/24/2022, at 7:12 AM */
 public class ScriptConfiguration {
 
@@ -16,7 +18,7 @@ public class ScriptConfiguration {
     private boolean stopScriptOnEarlyGuiClose = true;
     private boolean waitUntilLoggedInToShowGui = true;
 
-    public boolean isUsingGui() { return fxmlName != null; }
+    public boolean isUsingGui() { Log.trace("FXML Name: "+ fxmlName); return fxmlName != null; }
     public boolean isStartButtonStartsScript() {
         return startButtonStartsScript;
     }

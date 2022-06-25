@@ -20,7 +20,7 @@ public interface Directory {
     Directory TRiBot = () -> Tribot.getDirectory().toPath();
     Directory Root = FileHelper::createTRiBotPath;
     Directory Script = () -> FileHelper.createTRiBotPath("scripts", ScriptRuntimeInfo.getScriptName());
-    Directory GitHub = scripts.api.classes.GitHub.getInstance();
+    scripts.api.classes.GitHub GitHub = scripts.api.classes.GitHub.getInstance();
     Directory Account = () -> FileHelper.createTRiBotPath("tribot-account", Tribot.getUsername());
 
     default Path getLocksDirectory() {

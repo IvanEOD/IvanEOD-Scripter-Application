@@ -89,8 +89,8 @@ public abstract class ScriptExtension implements TribotScript {
     }
 
     private void loadGui() {
-        Log.trace("Loading GUI...");
         if (!scriptConfiguration.isUsingGui()) return;
+        Log.trace("Loading GUI...");
         gui = new ScriptGui(this);
         Log.trace("GUI Loaded.");
         controller = gui.getController();

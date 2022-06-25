@@ -15,6 +15,7 @@ import javafx.scene.layout.HBox;
 import org.tribot.script.sdk.Log;
 import org.tribot.script.sdk.Options;
 import scripts.api.classes.FileHelper;
+import scripts.api.classes.GitHub;
 import scripts.api.script.ScriptGuiController;
 import scripts.classes.AccountSetupOptions;
 
@@ -103,7 +104,6 @@ public class AccountSetupGuiController extends ScriptGuiController {
 
     private AccountSetupOptions accountSetupOptions;
 
-
     private class ListedAccount extends HBox {
 
         private String name;
@@ -128,20 +128,20 @@ public class AccountSetupGuiController extends ScriptGuiController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        var tribotLogo = FileHelper.getImage("tribotLogo");
+        var tribotLogo = GitHub.getImage("tribotLogo");
         if (tribotLogo != null) logo.setImage(tribotLogo);
 
         accountSetupOptions = new AccountSetupOptions().load("lastRun");
-        startButton.setOnAction(event -> this.onStartButtonPressed());
-        addNameButton.setOnAction(event -> this.onAddNameButtonPressed());
-
-        optionsLoadButton.setOnAction(event -> this.onOptionsLoadButtonPressed());
-        optionsSaveButton.setOnAction(event -> this.onOptionsSaveButtonPressed());
-
-        var savedOptions = accountSetupOptions.getSaveFileNames();
-
-        optionsSelector.getItems().add("default");
-        if (!savedOptions.isEmpty()) optionsSelector.getItems().addAll(savedOptions);
+//        startButton.setOnAction(event -> this.onStartButtonPressed());
+//        addNameButton.setOnAction(event -> this.onAddNameButtonPressed());
+//
+//        optionsLoadButton.setOnAction(event -> this.onOptionsLoadButtonPressed());
+//        optionsSaveButton.setOnAction(event -> this.onOptionsSaveButtonPressed());
+//
+//        var savedOptions = accountSetupOptions.getSaveFileNames();
+//
+//        optionsSelector.getItems().add("default");
+//        if (!savedOptions.isEmpty()) optionsSelector.getItems().addAll(savedOptions);
 
     }
 

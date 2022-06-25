@@ -20,7 +20,7 @@ import java.util.Objects;
 /* Written by IvanEOD 6/25/2022, at 2:26 PM */
 public class GitHub implements Directory {
 
-    private static final String GITHUB_URL = "https://raw.githubusercontent.com/IvanEOD/TribotScripterApplication/main/";
+    private static final String GITHUB_URL = "https://raw.githubusercontent.com/IvanEOD/IvanEOD-Scripter-Application/master/src/scripts/api/resources/";
     private static GitCache downloadCache;
 
 

@@ -18,7 +18,9 @@ import org.tribot.script.sdk.Log;
 import org.tribot.script.sdk.ScriptListening;
 import org.tribot.script.sdk.Waiting;
 import org.tribot.script.sdk.script.ScriptRuntimeInfo;
+import scripts.api.classes.Directory;
 import scripts.api.classes.FileHelper;
+import scripts.api.classes.GitHub;
 import scripts.api.classes.Utility;
 
 import javax.swing.*;
@@ -45,6 +47,7 @@ public class ScriptGui extends Application {
     private Stage stage;
     private Scene scene;
 
+    private final Runnable onPreEndingListener = this::onPreEnding;
     private final Delta dragDelta = new Delta();
 
     public ScriptGui(ScriptExtension script) {
@@ -53,13 +56,13 @@ public class ScriptGui extends Application {
         this.cssName = script.getScriptConfiguration().getCssName();
         this.fxmlName = script.getScriptConfiguration().getFxmlName();
         ScriptListening.addPreEndingListener(onPreEndingListener);
-
+        Log.trace("Starting SwingUtilities");
         SwingUtilities.invokeLater(() -> {
             new JFXPanel();
             Platform.runLater(() -> {
                 try {
                     final Stage stage = new Stage();
-                    stage.initStyle(StageStyle.DECORATED);
+                    stage.initStyle(StageStyle.TRANSPARENT);
                     this.start(stage);
                 } catch (Exception e) {
                     Log.error("Error starting GUI");
@@ -68,7 +71,9 @@ public class ScriptGui extends Application {
             });
         });
         waitForInit();
-    }    private final Runnable onPreEndingListener = this::onPreEnding;
+    }
+
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -76,8 +81,8 @@ public class ScriptGui extends Application {
             Log.info("No Gui Detected.");
             return;
         }
-
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+        Log.trace("Gui Starting...");
+        stage = primaryStage;
         UIDefaults uiDefaults = UIManager.getDefaults();
         uiDefaults.put("activeCaption", new ColorUIResource(Color.DARK_GRAY));
         uiDefaults.put("activeCaptionText", new ColorUIResource(Color.WHITE));
@@ -107,11 +112,11 @@ public class ScriptGui extends Application {
             stage.setY(event.getScreenY() + dragDelta.y);
         });
 
-        File fxmlFile = FileHelper.getFxml(fxmlName);
-        cssFile = FileHelper.getCss(cssName);
+        File fxmlFile = GitHub.getFxml(fxmlName);
+        cssFile = GitHub.getCss(cssName);
         if (fxmlFile == null) throw new RuntimeException("Fxml failed to load.");
         if (cssFile == null) throw new RuntimeException("Stylesheet failed to load.");
-        stage = primaryStage;
+
         stage.setTitle(Utility.toTitleCase(title));
         stage.setResizable(false);
         stage.setOnCloseRequest((event) -> onGuiClosed());
@@ -154,6 +159,9 @@ public class ScriptGui extends Application {
 
     private void waitForInit() {
         while (stage == null || controller == null) {
+            Log.trace("Waiting for Gui to load.");
+            Log.trace("Stage: " + stage);
+            Log.trace("Controller: " + controller);
             Waiting.wait(250);
         }
     }
