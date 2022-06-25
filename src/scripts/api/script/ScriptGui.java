@@ -58,6 +58,7 @@ public class ScriptGui extends Application {
         ScriptListening.addPreEndingListener(onPreEndingListener);
         Log.trace("Starting SwingUtilities");
         SwingUtilities.invokeLater(() -> {
+            Thread.currentThread().setUncaughtExceptionHandler(Thread.getDefaultUncaughtExceptionHandler());
             new JFXPanel();
             Platform.runLater(() -> {
                 try {
