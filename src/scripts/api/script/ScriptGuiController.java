@@ -33,6 +33,12 @@ public class ScriptGuiController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        setupComponents();
     }
+
+    public void setupComponents() {
+
+    }
+
 
 }

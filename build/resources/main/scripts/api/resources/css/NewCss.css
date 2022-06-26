@@ -90,7 +90,7 @@
     -fx-font-weight: bold;
 }
 
-.close-button
+.close-button,
 .minimize-button {
     -fx-border-color: -divider-color;
     -fx-border-width: 1;

@@ -68,9 +68,6 @@ public class ScriptGui extends Application {
                     guiScene = new GuiScene();
                     guiScene.setAlwaysOnTop(true);
                     start(guiScene);
-//                    stage = new Stage();
-
-//                    start(stage);
                 } catch (Exception e) {
                     Log.error("Error starting GUI", e);
 //                    throw new RuntimeException(e);
@@ -84,8 +81,6 @@ public class ScriptGui extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-
         Log.trace("Starting GUI");
         if (this.fxmlName == null) {
             Log.info("No Gui Detected.");
@@ -93,12 +88,6 @@ public class ScriptGui extends Application {
         }
         Log.trace("Gui Starting...");
 
-//        UIDefaults uiDefaults = UIManager.getDefaults();
-//        uiDefaults.put("activeCaption", new ColorUIResource(Color.DARK_GRAY));
-//        uiDefaults.put("activeCaptionText", new ColorUIResource(Color.WHITE));
-//        JFrame.setDefaultLookAndFeelDecorated(true);
-//
-//
         guiScene.buildContent();
         var toolbar = guiScene.getToolbar();
         stage = guiScene;
