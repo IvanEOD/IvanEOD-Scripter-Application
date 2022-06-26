@@ -23,6 +23,7 @@ import scripts.api.classes.FileHelper;
 import scripts.api.classes.GitHub;
 import scripts.api.classes.Utility;
 
+import javafx.scene.paint.Color;
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
@@ -46,6 +47,9 @@ public class ScriptGui extends Application {
     private File cssFile;
     private Stage stage;
     private Scene scene;
+    private AtomicBoolean initialized = new AtomicBoolean(false);
+
+    private GuiScene guiScene;
 
     private final Runnable onPreEndingListener = this::onPreEnding;
     private final Delta dragDelta = new Delta();
@@ -58,16 +62,14 @@ public class ScriptGui extends Application {
         ScriptListening.addPreEndingListener(onPreEndingListener);
         Log.trace("Starting SwingUtilities");
         SwingUtilities.invokeLater(() -> {
-            Thread.currentThread().setUncaughtExceptionHandler(Thread.getDefaultUncaughtExceptionHandler());
             new JFXPanel();
             Platform.runLater(() -> {
                 try {
-                    final Stage stage = new Stage();
-                    stage.initStyle(StageStyle.TRANSPARENT);
-                    this.start(stage);
+                    guiScene = new GuiScene();
+                    start(guiScene);
                 } catch (Exception e) {
-                    Log.error("Error starting GUI");
-                    throw new RuntimeException(e);
+                    Log.error("Error starting GUI", e);
+//                    throw new RuntimeException(e);
                 }
             });
         });
@@ -78,39 +80,34 @@ public class ScriptGui extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        guiScene.buildContent();
+
+        Log.trace("Starting GUI");
         if (this.fxmlName == null) {
             Log.info("No Gui Detected.");
             return;
         }
         Log.trace("Gui Starting...");
-        stage = primaryStage;
-        UIDefaults uiDefaults = UIManager.getDefaults();
-        uiDefaults.put("activeCaption", new ColorUIResource(Color.DARK_GRAY));
-        uiDefaults.put("activeCaptionText", new ColorUIResource(Color.WHITE));
-        JFrame.setDefaultLookAndFeelDecorated(true);
 
-        BorderPane borderPane = new BorderPane();
-        borderPane.setStyle("-fx-background-color: #282828;");
+//        UIDefaults uiDefaults = UIManager.getDefaults();
+//        uiDefaults.put("activeCaption", new ColorUIResource(Color.DARK_GRAY));
+//        uiDefaults.put("activeCaptionText", new ColorUIResource(Color.WHITE));
+//        JFrame.setDefaultLookAndFeelDecorated(true);
+//
+//
+        var toolbar = guiScene.getToolbar();
+        stage = guiScene;
+        scene = guiScene.getScene();
+        scene.setFill(Color.TRANSPARENT);
 
-        ToolBar toolbar = new ToolBar();
-
-        int height = 25;
-        toolbar.setPrefHeight(height);
-        toolbar.setMinHeight(height);
-        toolbar.setMaxHeight(height);
-        toolbar.getItems().add(new WindowButtons());
-
-        borderPane.setTop(toolbar);
-
-        scene = new Scene(borderPane);
         toolbar.setOnMousePressed(event -> {
-            dragDelta.x = stage.getX() - event.getScreenX();
-            dragDelta.y = stage.getY() - event.getScreenY();
+            dragDelta.x = guiScene.getX() - event.getScreenX();
+            dragDelta.y = guiScene.getY() - event.getScreenY();
         });
 
         toolbar.setOnMouseDragged(event -> {
-            stage.setX(event.getScreenX() + dragDelta.x);
-            stage.setY(event.getScreenY() + dragDelta.y);
+            guiScene.setX(event.getScreenX() + dragDelta.x);
+            guiScene.setY(event.getScreenY() + dragDelta.y);
         });
 
         File fxmlFile = GitHub.getFxml(fxmlName);
@@ -118,10 +115,14 @@ public class ScriptGui extends Application {
         if (fxmlFile == null) throw new RuntimeException("Fxml failed to load.");
         if (cssFile == null) throw new RuntimeException("Stylesheet failed to load.");
 
-        stage.setTitle(Utility.toTitleCase(title));
-        stage.setResizable(false);
-        stage.setOnCloseRequest((event) -> onGuiClosed());
-        stage.setOnShown(event -> onGuiOpened());
+        guiScene.setTitle(Utility.toTitleCase(title));
+        guiScene.setResizable(false);
+        guiScene.setOnCloseRequest((event) -> onGuiClosed());
+        guiScene.setOnShown(event -> onGuiOpened());
+
+        guiScene.getMinimizeButton().setOnAction(event -> guiScene.setIconified(true));
+        guiScene.getCloseButton().setOnAction(event -> guiScene.close());
+
         stage.setScene(scene);
 
 
@@ -145,26 +146,25 @@ public class ScriptGui extends Application {
             } else Log.info("Gui Controller loaded.");
         }
 
-        borderPane.setCenter(box);
-
 
         controller.setGui(this);
         controller.setScript(script);
 //        scene = new Scene(box);
         scene.getStylesheets().clear();
         scene.getStylesheets().add(cssFile.toURI().toURL().toExternalForm());
-
-        controller.setScene(scene);
+        scene.getRoot().applyCss();
+//        controller.setScene(scene);
+        initialized.set(true);
         Platform.setImplicitExit(false);
     }
 
     private void waitForInit() {
-        while (stage == null || controller == null) {
-            Log.trace("Waiting for Gui to load.");
-            Log.trace("Stage: " + stage);
-            Log.trace("Controller: " + controller);
+        Log.trace("Waiting for Gui to load.");
+//        while (stage == null || controller == null) {
+        while (!initialized.get()) {
             Waiting.wait(250);
         }
+        Log.trace("Gui loaded.");
     }
 
     private void onGuiClosed() {

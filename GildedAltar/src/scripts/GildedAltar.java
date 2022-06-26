@@ -3,6 +3,8 @@ package scripts;
 import scripts.api.script.ScriptConfiguration;
 import scripts.api.script.ScriptExtension;
 
+import java.util.function.UnaryOperator;
+
 /* Written by IvanEOD 6/24/2022, at 7:09 AM */
 public class GildedAltar extends ScriptExtension {
 
@@ -23,7 +25,8 @@ public class GildedAltar extends ScriptExtension {
     }
 
     @Override
-    protected void updateScriptConfiguration(ScriptConfiguration scriptConfiguration) {
-
+    protected UnaryOperator<ScriptConfiguration> updateScriptConfiguration() {
+        return config -> config;
     }
+
 }

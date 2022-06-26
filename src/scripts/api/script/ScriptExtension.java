@@ -9,6 +9,7 @@ import org.tribot.script.sdk.script.TribotScript;
 import scripts.api.classes.Utility;
 
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.UnaryOperator;
 
 /* Written by IvanEOD 6/24/2022, at 7:11 AM */
 public abstract class ScriptExtension implements TribotScript {
@@ -26,7 +27,7 @@ public abstract class ScriptExtension implements TribotScript {
     protected abstract boolean onScriptStart(String args);
     protected abstract void onMainLoop();
     protected abstract void onScriptShutdown();
-    protected abstract void updateScriptConfiguration(ScriptConfiguration scriptConfiguration);
+    protected abstract UnaryOperator<ScriptConfiguration> updateScriptConfiguration();
 
     private void onScriptShutdownInternal() {
         if (gui != null && gui.isShowing()) gui.close();
@@ -46,7 +47,7 @@ public abstract class ScriptExtension implements TribotScript {
     @Override
     public void configure(@NotNull ScriptConfig config) {
         scriptConfiguration = new ScriptConfiguration();
-        updateScriptConfiguration(scriptConfiguration);
+        updateScriptConfiguration().apply(scriptConfiguration);
         config.setBreakHandlerEnabled(scriptConfiguration.isBreakHandlerEnabled());
         config.setRandomsAndLoginHandlerEnabled(scriptConfiguration.isRandomsAndLoginHandlerEnabled());
 
@@ -95,12 +96,12 @@ public abstract class ScriptExtension implements TribotScript {
         Log.trace("GUI Loaded.");
         controller = gui.getController();
         Log.trace("GUI Controller Loaded: " + (controller != null));
-        if (controller == null) {
-            if (!Waiting.waitUntil(4000, () -> {
-                controller = gui.getController();
-                return controller != null;
-            })) throw new RuntimeException("Failed to load GUI.");
-        }
+//        if (controller == null) {
+//            if (!Waiting.waitUntil(4000, () -> {
+//                controller = gui.getController();
+//                return controller != null;
+//            })) throw new RuntimeException("Failed to load GUI.");
+//        }
 
         if (scriptConfiguration.isOpenGuiAtScriptStart()) {
             gui.show();
