@@ -66,6 +66,7 @@ public class ScriptGui extends Application {
             Platform.runLater(() -> {
                 try {
                     guiScene = new GuiScene();
+                    guiScene.setAlwaysOnTop(true);
                     start(guiScene);
                 } catch (Exception e) {
                     Log.error("Error starting GUI", e);

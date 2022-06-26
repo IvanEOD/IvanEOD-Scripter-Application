@@ -24,11 +24,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="21.0" prefWidth="550.0" spacing="5.0">
                      <children>
-                        <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/tribotLogo.png" />
-                           </image>
-                        </ImageView>
+                        <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
                         <Label styleClass="title" text="IvanEOD Scripts" />
                      </children>
                   </HBox>

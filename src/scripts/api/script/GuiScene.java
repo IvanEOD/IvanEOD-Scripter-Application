@@ -31,7 +31,6 @@ public class GuiScene extends Stage {
         initStyle(StageStyle.UNDECORATED);
 
 
-
     }
 
     public void buildContent() {
@@ -52,7 +51,7 @@ public class GuiScene extends Stage {
         toolbarHbox.setAlignment(Pos.CENTER_RIGHT);
         toolbarHbox.setPadding(new Insets(2, 0, 2, 0));
         toolbarHbox.setPrefSize(588, 25);
-
+        toolbarHbox.setStyle("-fx-background-color: transparent;");
 
 
         var titleLogo = new ImageView();
@@ -70,6 +69,7 @@ public class GuiScene extends Stage {
         toolbarLeft.setPadding(new Insets(0));
         toolbarLeft.setAlignment(Pos.CENTER_LEFT);
         toolbarLeft.setPrefSize(550, 21);
+        toolbarLeft.setStyle("-fx-background-color: transparent;");
 
         closeButton = new JFXButton("X");
         closeButton.setButtonType(JFXButton.ButtonType.RAISED);
@@ -132,6 +132,7 @@ public class GuiScene extends Stage {
 
         var contentArea = new VBox(menubar, content);
         contentArea.setPrefSize(600, 400);
+        contentArea.setStyle("-fx-background-color: transparent;");
         //</editor-fold>
 
         root.getChildren().addAll(toolbar, contentArea);
