@@ -1,0 +1,1 @@
+C:\Users\ivanc\OneDrive\Desktop\Rebuild\scripts\IvanEOD Scripter Application\GildedAltar\build\classes\java\main\scripts\GildedAltar.class;C:\Users\ivanc\OneDrive\Desktop\Rebuild\scripts\IvanEOD Scripter Application\GildedAltar\build\classes\java\main\scripts\GildedAltarGuiController.class
