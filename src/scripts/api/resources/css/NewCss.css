@@ -58,6 +58,10 @@
 
 }
 
+.background {
+    -fx-background-color: transparent;
+}
+
 .title {
     -fx-text-fill: -text-secondary;
 }
