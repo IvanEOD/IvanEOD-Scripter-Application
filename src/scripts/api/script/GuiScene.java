@@ -42,7 +42,7 @@ public class GuiScene extends Stage {
         setResizable(false);
 
         root = new VBox();
-        root.setStyle("-fx-background-color: -background-default; -fx-background-radius: 10;" );
+//        root.setStyle("-fx-background-color: -background-default; -fx-background-radius: 10;" );
         root.getStyleClass().add("main-window");
 
         //<editor-fold desc="Toolbar">
@@ -55,7 +55,7 @@ public class GuiScene extends Stage {
         toolbarHbox.setAlignment(Pos.CENTER_RIGHT);
         toolbarHbox.setPadding(new Insets(4));
         toolbarHbox.setPrefSize(588, 20);
-        toolbarHbox.setStyle("-fx-background-color: transparent;");
+//        toolbarHbox.setStyle("-fx-background-color: transparent;");
 
 
         var titleLogo = new ImageView();
@@ -63,7 +63,7 @@ public class GuiScene extends Stage {
         titleLogo.setFitWidth(21);
         titleLogo.setPreserveRatio(true);
         titleLogo.setSmooth(true);
-        titleLogo.setStyle("-fx-text-fill: -text-secondary;");
+//        titleLogo.setStyle("-fx-text-fill: -text-secondary;");
         Image logo = GitHub.getImage("tribotLogo");
         titleLogo.setImage(logo);
 
@@ -74,16 +74,16 @@ public class GuiScene extends Stage {
         toolbarLeft.setPadding(new Insets(0));
         toolbarLeft.setAlignment(Pos.CENTER_LEFT);
         toolbarLeft.setPrefSize(550, 21);
-        toolbarLeft.setStyle("-fx-background-color: transparent;");
+//        toolbarLeft.setStyle("-fx-background-color: transparent;");
 
         closeButton = new JFXButton("X");
         closeButton.setButtonType(JFXButton.ButtonType.RAISED);
-        closeButton.setStyle("-fx-border-color: -divider-color;" +
-                "    -fx-border-width: 1;\n" +
-                "    -fx-border-radius: 5;\n" +
-                "    -fx-background-radius: 5;" +
-                "    -fx-background-color: -error-color;\n" +
-                "    -fx-text-fill: -error-contrast-text;");
+//        closeButton.setStyle("-fx-border-color: -divider-color;" +
+//                "    -fx-border-width: 1;\n" +
+//                "    -fx-border-radius: 5;\n" +
+//                "    -fx-background-radius: 5;" +
+//                "    -fx-background-color: -error-color;\n" +
+//                "    -fx-text-fill: -error-contrast-text;");
         closeButton.setCancelButton(true);
         closeButton.setPrefSize(15, 15);
         closeButton.setMaxSize(15, 15);
@@ -93,21 +93,21 @@ public class GuiScene extends Stage {
 
         minimizeButton = new JFXButton("_");
         minimizeButton.setButtonType(JFXButton.ButtonType.RAISED);
-        minimizeButton.setStyle("    -fx-border-color: -divider-color;\n" +
-                "    -fx-border-width: 1;\n" +
-                "    -fx-border-radius: 5;\n" +
-                "    -fx-text-fill: -text-secondary;\n" +
-                "    -fx-background-radius: 5;");
+//        minimizeButton.setStyle("    -fx-border-color: -divider-color;\n" +
+//                "    -fx-border-width: 1;\n" +
+//                "    -fx-border-radius: 5;\n" +
+//                "    -fx-text-fill: -text-secondary;\n" +
+//                "    -fx-background-radius: 5;");
         minimizeButton.setPrefSize(15, 15);
         minimizeButton.setMaxSize(15, 15);
         minimizeButton.getStyleClass().add("minimize-button");
         minimizeButton.setOnAction(e -> ((Stage) minimizeButton.getScene().getWindow()).setIconified(true));
         minimizeButton.setAlignment(Pos.CENTER);
 
-        toolbar.setStyle("    -fx-background-radius: 10 10 0 0;\n" +
-                "    -fx-background-color: -background-paper-darker;\n" +
-                "    -fx-border-width: 0 0 0 0;\n" +
-                "    -fx-border-color: -divider-color;");
+//        toolbar.setStyle("    -fx-background-radius: 10 10 0 0;" +
+//                "    -fx-background-color: -background-paper-darker;" +
+//                "    -fx-border-width: 0 0 0 0;" +
+//                "    -fx-border-color: -divider-color;");
 
         var toolbarRight = new HBox(1, minimizeButton, closeButton);
         toolbarRight.setPrefSize(38, 21);
@@ -136,14 +136,14 @@ public class GuiScene extends Stage {
 
         var content = new AnchorPane();
         content.setPrefSize(600, 380);
-        content.setStyle("    -fx-border-width: 0 2 2 2;\n" +
-                "    -fx-border-radius: 0 0 10 10;\n" +
-                "    -fx-border-color: -background-paper-darker;");
+//        content.setStyle("    -fx-border-width: 0 2 2 2;\n" +
+//                "    -fx-border-radius: 0 0 10 10;\n" +
+//                "    -fx-border-color: -background-paper-darker;");
         content.getStyleClass().add("content-pane");
 
         var contentArea = new VBox(menubar, content);
         contentArea.setPrefSize(600, 400);
-        contentArea.setStyle("-fx-background-color: transparent;");
+//        contentArea.setStyle("-fx-background-color: transparent;");
         //</editor-fold>
 
         root.getChildren().addAll(toolbar, contentArea);
