@@ -90,6 +90,7 @@
     -fx-font-weight: bold;
 }
 
+.close-button
 .minimize-button {
     -fx-border-color: -divider-color;
     -fx-border-width: 1;
@@ -100,13 +101,6 @@
 
 .minimize-button:hover {
     -fx-background-color: -background-paper-darker;
-}
-
-.close-button {
-    -fx-border-color: -divider-color;
-    -fx-border-width: 1;
-    -fx-border-radius: 5;
-    -fx-background-radius: 5;
 }
 
 .jfx-button:cancel {
