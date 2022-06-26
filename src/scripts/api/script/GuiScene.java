@@ -42,7 +42,7 @@ public class GuiScene extends Stage {
         setResizable(false);
 
         root = new VBox();
-//        root.setStyle("-fx-background-color: -background-default; -fx-background-radius: 10;" );
+        root.setStyle("-fx-background-color: -background-default; -fx-background-radius: 10;" );
         root.getStyleClass().add("main-window");
 
         //<editor-fold desc="Toolbar">
@@ -55,7 +55,7 @@ public class GuiScene extends Stage {
         toolbarHbox.setAlignment(Pos.CENTER_RIGHT);
         toolbarHbox.setPadding(new Insets(4));
         toolbarHbox.setPrefSize(588, 20);
-//        toolbarHbox.setStyle("-fx-background-color: transparent;");
+        toolbarHbox.setStyle("-fx-background-color: transparent;");
 
 
         var titleLogo = new ImageView();
@@ -63,7 +63,7 @@ public class GuiScene extends Stage {
         titleLogo.setFitWidth(21);
         titleLogo.setPreserveRatio(true);
         titleLogo.setSmooth(true);
-//        titleLogo.setStyle("-fx-text-fill: -text-secondary;");
+        titleLogo.setStyle("-fx-text-fill: -text-secondary;");
         Image logo = GitHub.getImage("tribotLogo");
         titleLogo.setImage(logo);
 
@@ -74,16 +74,16 @@ public class GuiScene extends Stage {
         toolbarLeft.setPadding(new Insets(0));
         toolbarLeft.setAlignment(Pos.CENTER_LEFT);
         toolbarLeft.setPrefSize(550, 21);
-//        toolbarLeft.setStyle("-fx-background-color: transparent;");
+        toolbarLeft.setStyle("-fx-background-color: transparent;");
 
         closeButton = new JFXButton("X");
         closeButton.setButtonType(JFXButton.ButtonType.RAISED);
-//        closeButton.setStyle("-fx-border-color: -divider-color;" +
-//                "    -fx-border-width: 1;\n" +
-//                "    -fx-border-radius: 5;\n" +
-//                "    -fx-background-radius: 5;" +
-//                "    -fx-background-color: -error-color;\n" +
-//                "    -fx-text-fill: -error-contrast-text;");
+        closeButton.setStyle("-fx-border-color: -divider-color;" +
+                "    -fx-border-width: 1;\n" +
+                "    -fx-border-radius: 5;\n" +
+                "    -fx-background-radius: 5;" +
+                "    -fx-background-color: -error-color;\n" +
+                "    -fx-text-fill: -error-contrast-text;");
         closeButton.setCancelButton(true);
         closeButton.setPrefSize(15, 15);
         closeButton.setMaxSize(15, 15);
@@ -93,21 +93,21 @@ public class GuiScene extends Stage {
 
         minimizeButton = new JFXButton("_");
         minimizeButton.setButtonType(JFXButton.ButtonType.RAISED);
-//        minimizeButton.setStyle("    -fx-border-color: -divider-color;\n" +
-//                "    -fx-border-width: 1;\n" +
-//                "    -fx-border-radius: 5;\n" +
-//                "    -fx-text-fill: -text-secondary;\n" +
-//                "    -fx-background-radius: 5;");
+        minimizeButton.setStyle("    -fx-border-color: -divider-color;\n" +
+                "    -fx-border-width: 1;\n" +
+                "    -fx-border-radius: 5;\n" +
+                "    -fx-text-fill: -text-secondary;\n" +
+                "    -fx-background-radius: 5;");
         minimizeButton.setPrefSize(15, 15);
         minimizeButton.setMaxSize(15, 15);
         minimizeButton.getStyleClass().add("minimize-button");
         minimizeButton.setOnAction(e -> ((Stage) minimizeButton.getScene().getWindow()).setIconified(true));
         minimizeButton.setAlignment(Pos.CENTER);
 
-//        toolbar.setStyle("    -fx-background-radius: 10 10 0 0;\n" +
-//                "    -fx-background-color: -background-paper-darker;\n" +
-//                "    -fx-border-width: 0 0 0 0;\n" +
-//                "    -fx-border-color: -divider-color;");
+        toolbar.setStyle("    -fx-background-radius: 10 10 0 0;\n" +
+                "    -fx-background-color: -background-paper-darker;\n" +
+                "    -fx-border-width: 0 0 0 0;\n" +
+                "    -fx-border-color: -divider-color;");
 
         var toolbarRight = new HBox(1, minimizeButton, closeButton);
         toolbarRight.setPrefSize(38, 21);
@@ -136,9 +136,9 @@ public class GuiScene extends Stage {
 
         var content = new AnchorPane();
         content.setPrefSize(600, 380);
-//        content.setStyle("    -fx-border-width: 0 2 2 2;\n" +
-//                "    -fx-border-radius: 0 0 10 10;\n" +
-//                "    -fx-border-color: -background-paper-darker;");
+        content.setStyle("    -fx-border-width: 0 2 2 2;\n" +
+                "    -fx-border-radius: 0 0 10 10;\n" +
+                "    -fx-border-color: -background-paper-darker;");
         content.getStyleClass().add("content-pane");
 
         var contentArea = new VBox(menubar, content);
@@ -152,72 +152,6 @@ public class GuiScene extends Stage {
 
 
     }
-
-
-//
-//<AnchorPane style="-fx-background-color: transparent;" styleClass="background" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scripts.AccountSetupController">
-//   <children>
-//      <VBox prefHeight="434.0" prefWidth="600.0" styleClass="main-window">
-//         <children>
-//            <ToolBar fx:id="mainToolBar" maxHeight="25.0" maxWidth="600.0" minHeight="25.0" prefHeight="25.0" prefWidth="600.0">
-//              <items>
-//                  <HBox alignment="CENTER_RIGHT" maxHeight="25.0" minHeight="25.0" prefHeight="25.0" prefWidth="588.0" spacing="2.0" styleClass="tool-bar">
-//                     <children>
-//                        <HBox alignment="CENTER_LEFT" prefHeight="21.0" prefWidth="550.0" spacing="5.0">
-//                           <children>
-//                              <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" />
-//                              <Label styleClass="title" text="IvanEOD Scripts" />
-//                           </children>
-//                        </HBox>
-//                        <JFXButton fx:id="minimizeButton" buttonType="RAISED" layoutX="534.0" layoutY="12.0" maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" prefHeight="18.0" prefWidth="18.0" styleClass="minimize-button" text="_">
-//                           <font>
-//                              <Font size="8.0" />
-//                           </font>
-//                        </JFXButton>
-//                        <JFXButton fx:id="closeButton" alignment="CENTER" buttonType="RAISED" cancelButton="true" contentDisplay="CENTER" maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" prefHeight="18.0" prefWidth="18.0" styleClass="close-button" text="X" textAlignment="CENTER">
-//                           <font>
-//                              <Font name="System Bold" size="8.0" />
-//                           </font>
-//                        </JFXButton>
-//                     </children>
-//                     <padding>
-//                        <Insets bottom="2.0" top="2.0" />
-//                     </padding>
-//                  </HBox>
-//              </items>
-//            </ToolBar>
-//            <VBox maxWidth="600.0" minWidth="600.0" prefHeight="408.0" prefWidth="600.0" style="-fx-background-radius: 10;">
-//              <children>
-//                <MenuBar maxHeight="25.0" prefHeight="10.0" prefWidth="600.0" VBox.vgrow="NEVER">
-//                  <menus>
-//                    <Menu mnemonicParsing="false" text="File">
-//                      <items>
-//                        <MenuItem mnemonicParsing="false" text="Preferences…" />
-//                        <SeparatorMenuItem mnemonicParsing="false" />
-//                        <MenuItem mnemonicParsing="false" text="Quit" />
-//                      </items>
-//                    </Menu>
-//                    <Menu mnemonicParsing="false" text="Edit">
-//                      <items>
-//                        <MenuItem mnemonicParsing="false" text="Copy" />
-//                        <MenuItem mnemonicParsing="false" text="Paste" />
-//                      </items>
-//                    </Menu>
-//                    <Menu mnemonicParsing="false" text="Help">
-//                      <items>
-//                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-//                      </items>
-//                    </Menu>
-//                  </menus>
-//                </MenuBar>
-//                <AnchorPane fx:id="contentPane" disable="true" maxHeight="-1.0" maxWidth="-1.0" prefHeight="348.0" prefWidth="600.0" styleClass="content-pane" VBox.vgrow="ALWAYS" />
-//              </children>
-//            </VBox>
-//         </children>
-//      </VBox>
-//   </children>
-//</AnchorPane>
-
 
     private static <NodeType extends Region> NodeType setup(Supplier<NodeType> nodeSupplier, double width, double height) {
         var node = nodeSupplier.get();

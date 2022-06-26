@@ -107,13 +107,13 @@ public class ScriptGui extends Application {
         scene.setFill(Color.TRANSPARENT);
 
         toolbar.setOnMousePressed(event -> {
-            dragDelta.x = guiScene.getX() - event.getScreenX();
-            dragDelta.y = guiScene.getY() - event.getScreenY();
+            dragDelta.x = stage.getX() - event.getScreenX();
+            dragDelta.y = stage.getY() - event.getScreenY();
         });
 
         toolbar.setOnMouseDragged(event -> {
-            guiScene.setX(event.getScreenX() + dragDelta.x);
-            guiScene.setY(event.getScreenY() + dragDelta.y);
+            stage.setX(event.getScreenX() + dragDelta.x);
+            stage.setY(event.getScreenY() + dragDelta.y);
         });
 
         File fxmlFile = GitHub.getFxml(fxmlName);
@@ -121,12 +121,12 @@ public class ScriptGui extends Application {
         if (fxmlFile == null) throw new RuntimeException("Fxml failed to load.");
         if (cssFile == null) throw new RuntimeException("Stylesheet failed to load.");
 
-        guiScene.setTitle(Utility.toTitleCase(title));
-        guiScene.setResizable(false);
-        guiScene.setOnCloseRequest((event) -> onGuiClosed());
-        guiScene.setOnShown(event -> onGuiOpened());
-        guiScene.getMinimizeButton().setOnAction(event -> guiScene.setIconified(true));
-        guiScene.getCloseButton().setOnAction(event -> guiScene.close());
+        stage.setTitle(Utility.toTitleCase(title));
+        stage.setResizable(false);
+        stage.setOnCloseRequest((event) -> onGuiClosed());
+        stage.setOnShown(event -> onGuiOpened());
+        guiScene.getMinimizeButton().setOnAction(event -> stage.setIconified(true));
+        guiScene.getCloseButton().setOnAction(event -> stage.close());
 //        stage.setScene(scene);
 
         FXMLLoader loader = new FXMLLoader();
@@ -154,7 +154,7 @@ public class ScriptGui extends Application {
         controller.setScript(script);
 //        scene = new Scene(box);
         scene.setFill(Color.TRANSPARENT);
-        scene.getStylesheets().clear();
+//        scene.getStylesheets().clear();
         scene.getStylesheets().add(cssFile.toURI().toURL().toExternalForm());
         scene.getRoot().applyCss();
         stage.setScene(scene);
