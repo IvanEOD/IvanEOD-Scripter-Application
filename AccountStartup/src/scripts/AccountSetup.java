@@ -27,7 +27,7 @@ public class AccountSetup extends ScriptExtension {
 
     @Override
     protected UnaryOperator<ScriptConfiguration> updateScriptConfiguration() {
-        return config -> config.disableWaitUntilLoggedInToShowGui().cssName("NewCss").fxmlName("Template");
+        return config -> config.cssName("NewCss").fxmlName("Template");
     }
 
 

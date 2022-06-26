@@ -65,9 +65,12 @@ public class ScriptGui extends Application {
             new JFXPanel();
             Platform.runLater(() -> {
                 try {
-                    guiScene = new GuiScene();
-                    guiScene.setAlwaysOnTop(true);
-                    start(guiScene);
+//                    guiScene = new GuiScene();
+//                    guiScene.setAlwaysOnTop(true);
+//                    start(guiScene);
+                    stage = new Stage();
+                    stage.initStyle(StageStyle.UNDECORATED);
+                    start(stage);
                 } catch (Exception e) {
                     Log.error("Error starting GUI", e);
 //                    throw new RuntimeException(e);
@@ -81,7 +84,7 @@ public class ScriptGui extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        guiScene.buildContent();
+//        guiScene.buildContent();
 
         Log.trace("Starting GUI");
         if (this.fxmlName == null) {
@@ -96,36 +99,33 @@ public class ScriptGui extends Application {
 //        JFrame.setDefaultLookAndFeelDecorated(true);
 //
 //
-        var toolbar = guiScene.getToolbar();
-        stage = guiScene;
-        scene = guiScene.getScene();
-        scene.setFill(Color.TRANSPARENT);
-
-        toolbar.setOnMousePressed(event -> {
-            dragDelta.x = guiScene.getX() - event.getScreenX();
-            dragDelta.y = guiScene.getY() - event.getScreenY();
-        });
-
-        toolbar.setOnMouseDragged(event -> {
-            guiScene.setX(event.getScreenX() + dragDelta.x);
-            guiScene.setY(event.getScreenY() + dragDelta.y);
-        });
+//        var toolbar = guiScene.getToolbar();
+//        stage = guiScene;
+//        scene = guiScene.getScene();
+//        scene.setFill(Color.TRANSPARENT);
+//
+//        toolbar.setOnMousePressed(event -> {
+//            dragDelta.x = guiScene.getX() - event.getScreenX();
+//            dragDelta.y = guiScene.getY() - event.getScreenY();
+//        });
+//
+//        toolbar.setOnMouseDragged(event -> {
+//            guiScene.setX(event.getScreenX() + dragDelta.x);
+//            guiScene.setY(event.getScreenY() + dragDelta.y);
+//        });
 
         File fxmlFile = GitHub.getFxml(fxmlName);
         cssFile = GitHub.getCss(cssName);
         if (fxmlFile == null) throw new RuntimeException("Fxml failed to load.");
         if (cssFile == null) throw new RuntimeException("Stylesheet failed to load.");
 
-        guiScene.setTitle(Utility.toTitleCase(title));
-        guiScene.setResizable(false);
-        guiScene.setOnCloseRequest((event) -> onGuiClosed());
-        guiScene.setOnShown(event -> onGuiOpened());
-
-        guiScene.getMinimizeButton().setOnAction(event -> guiScene.setIconified(true));
-        guiScene.getCloseButton().setOnAction(event -> guiScene.close());
-
-        stage.setScene(scene);
-
+//        guiScene.setTitle(Utility.toTitleCase(title));
+//        guiScene.setResizable(false);
+//        guiScene.setOnCloseRequest((event) -> onGuiClosed());
+//        guiScene.setOnShown(event -> onGuiOpened());
+//        guiScene.getMinimizeButton().setOnAction(event -> guiScene.setIconified(true));
+//        guiScene.getCloseButton().setOnAction(event -> guiScene.close());
+//        stage.setScene(scene);
 
         FXMLLoader loader = new FXMLLoader();
         loader.setClassLoader(getClass().getClassLoader());
@@ -150,11 +150,13 @@ public class ScriptGui extends Application {
 
         controller.setGui(this);
         controller.setScript(script);
-//        scene = new Scene(box);
+        scene = new Scene(box);
+        scene.setFill(Color.TRANSPARENT);
         scene.getStylesheets().clear();
         scene.getStylesheets().add(cssFile.toURI().toURL().toExternalForm());
         scene.getRoot().applyCss();
-//        controller.setScene(scene);
+        stage.setScene(scene);
+        controller.setScene(scene);
         initialized.set(true);
         Platform.setImplicitExit(false);
     }
