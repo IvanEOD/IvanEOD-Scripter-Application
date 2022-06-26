@@ -14,10 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/15" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scripts.AccountSetupController">
    <children>
-      <VBox layoutY="0.01" prefHeight="434.0" prefWidth="600.0" styleClass="main-window">
+      <VBox layoutY="1.0" prefHeight="434.0" prefWidth="600.0" styleClass="main-window">
          <children>
             <ToolBar fx:id="mainToolBar" maxHeight="25.0" maxWidth="600.0" minHeight="25.0" prefHeight="25.0" prefWidth="600.0">
               <items>
