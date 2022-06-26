@@ -25,7 +25,7 @@ public class AccountSetup extends ScriptExtension {
 
     @Override
     public void updateScriptConfiguration(ScriptConfiguration scriptConfiguration) {
-        scriptConfiguration.fxmlName("AccountSetupGui").cssName("IvanEODStyle");
+        scriptConfiguration.fxmlName("Template").cssName("NewCss");
     }
 
 

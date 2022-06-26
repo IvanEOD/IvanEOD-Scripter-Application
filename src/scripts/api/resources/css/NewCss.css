@@ -65,10 +65,122 @@
 
 .tool-bar {
     -fx-background-radius: 10 10 0 0;
+    -fx-background-color: -background-paper-darker;
+    -fx-border-width: 0 0 0 0;
+    -fx-border-color: -divider-color;
 }
 
+.minimize-button {
+    -fx-border-color: -divider-color;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-text-fill: -text-secondary;
+    -fx-background-radius: 5;
+}
+
+.close-button {
+    -fx-border-color: -divider-color;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
 
 .jfx-button:cancel {
     -fx-background-color: -error-color;
     -fx-text-fill: -error-contrast-text;
+}
+
+.content-pane {
+    -fx-border-width: 0 2 2 2;
+    -fx-border-radius: 0 0 10 10;
+    -fx-border-color: -background-paper-darker;
+
+
+}
+
+.menu-bar {
+    -fx-border-width: 0 2 2 2;
+    -fx-border-style: solid;
+    -fx-blend-mode: src-atop;
+    -fx-text-fill: -text-secondary;
+    -fx-background-color: -background-paper;
+    -fx-border-color: -background-paper-darker;
+
+}
+
+.menu-bar .container .menu {
+    -fx-border-width: 1;
+    -fx-border-style: dashed;
+    -fx-border-color: transparent;
+    -fx-text-fill: -text-secondary;
+}
+
+.menu-bar .container .menu .label .text {
+    -fx-text-fill: -text-primary;
+    -fx-fill: -text-primary;
+}
+
+.menu-bar .container .menu .menu-item .label .text {
+    -fx-text-fill: -text-primary;
+    -fx-fill: -text-primary;
+}
+
+
+.menu-bar .container .menu:hover .label .text,
+.menu-bar .container .menu:focused .label .text,
+.menu-bar .container .menu:pressed .label .text,
+.menu-bar .container .menu:showing .label .text {
+    -fx-text-fill: -primary-color;
+    -fx-fill: -primary-color;
+}
+
+.menu-bar .container .menu:hover,
+.menu-bar .container .menu:focused,
+.menu-bar .container .menu:pressed,
+.menu-bar .container .menu:showing {
+    -fx-border-width: 1;
+    -fx-border-color: -primary-color;
+    -fx-background-color: transparent;
+    -fx-text-fill: -primary-color;
+    -fx-fill: -primary-color;
+}
+
+.menu-bar .container .menu .menu-item:hover .label .text,
+.menu-bar .container .menu .menu-item:focused .label .text,
+.menu-bar .container .menu .menu-item:pressed .label .text,
+.menu-bar .container .menu .menu-item:showing .label .text {
+    -fx-text-fill: -primary-color;
+    -fx-fill: -primary-color;
+}
+
+.menu-bar .container .menu .menu-item:hover,
+.menu-bar .container .menu .menu-item:focused,
+.menu-bar .container .menu .menu-item:pressed,
+.menu-bar .container .menu .menu-item:showing {
+    -fx-border-width: 0;
+    -fx-border-color: -primary-color;
+    -fx-background-color: transparent;
+    -fx-text-fill: -primary-color;
+    -fx-fill: -primary-color;
+}
+
+.menu-item:focused,
+.menu-item:pressed {
+    -fx-border-width: 0;
+    -fx-background-color: transparent;
+    -fx-text-fill: -primary-color;
+    -fx-fill: -primary-color;
+}
+
+.menu-bar .container .menu-item .label .text {
+    -fx-fill: -text-secondary;
+}
+
+.menu-bar .container .menu-item:pressed .label .text,
+.menu-bar .container .menu-item:focused .label .text {
+    -fx-fill: -primary-color;
+}
+
+.context-menu {
+    -fx-background-color: -background-paper-lighter;
 }
