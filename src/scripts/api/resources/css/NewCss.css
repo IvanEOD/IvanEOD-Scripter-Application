@@ -58,6 +58,10 @@
 
 }
 
+.title {
+    -fx-text-fill: -text-secondary;
+}
+
 .main-window {
     -fx-background-color: -background-default;
     -fx-background-radius: 10;
@@ -105,7 +109,6 @@
     -fx-text-fill: -text-secondary;
     -fx-background-color: -background-paper;
     -fx-border-color: -background-paper-darker;
-
 }
 
 .menu-bar .container .menu {
@@ -124,7 +127,6 @@
     -fx-text-fill: -text-primary;
     -fx-fill: -text-primary;
 }
-
 
 .menu-bar .container .menu:hover .label .text,
 .menu-bar .container .menu:focused .label .text,
