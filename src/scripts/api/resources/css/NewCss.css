@@ -51,7 +51,7 @@
 
     -primary-rippler: radial-gradient(focus-angle 0.0deg, focus-distance 0.0%, center 50.0% 50.0%, radius 50.0%, -primary-color 0.0%, -background-paper-lighter 100.0%);
     -underline-primary: linear-gradient(from 0.0% 100.0% to 100.0% 100.0%, transparent 0.0%, -primary-color 15%, -primary-color 85%, transparent 100.0%);
-
+    -shadow: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.000000000000014% 50.0%, radius 70%, #ffffffff 0.0%, #ffffffff 30%, #9e9e9eff 65%, #000000ff 100.0%)
 
 }
 
@@ -98,6 +98,10 @@
     -fx-background-radius: 5;
 }
 
+.minimize-button:hover {
+    -fx-background-color: -background-paper-darker;
+}
+
 .close-button {
     -fx-border-color: -divider-color;
     -fx-border-width: 1;
@@ -109,6 +113,18 @@
     -fx-background-color: -error-color;
     -fx-text-fill: -error-contrast-text;
 }
+
+.jfx-button:hover {
+    -fx-effect: innershadow(gaussian, rgba(255, 255, 255, 0.4), 5, 0.1, 0, 0);
+}
+
+.jfx-button:cancel:hover {
+    -fx-effect: innershadow(gaussian, rgba(255, 255, 255, 0.6), 5, 0.1, 0, 0);
+
+    /*-fx-effect: innershadow(gaussian, rgba(0, 0, 0), 5, 0.25, 0, 0);*/
+}
+
+
 
 .content-pane {
     -fx-border-width: 0 2 2 2;
