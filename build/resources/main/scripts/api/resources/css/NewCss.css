@@ -47,7 +47,7 @@
 
     -divider-color: rgba(255, 255, 255, 0.12);
 
-    -default-font-family: "Syne Mono", monospace;
+    -default-font-family: "Syne Mono";
 
     -primary-rippler: radial-gradient(focus-angle 0.0deg, focus-distance 0.0%, center 50.0% 50.0%, radius 50.0%, -primary-color 0.0%, -background-paper-lighter 100.0%);
     -underline-primary: linear-gradient(from 0.0% 100.0% to 100.0% 100.0%, transparent 0.0%, -primary-color 15%, -primary-color 85%, transparent 100.0%);
