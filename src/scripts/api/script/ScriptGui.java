@@ -128,10 +128,7 @@ public class ScriptGui extends Application {
 
     private void waitForInit() {
         Log.trace("Waiting for Gui to load.");
-//        while (stage == null || controller == null) {
-        while (!initialized.get()) {
-            Waiting.wait(250);
-        }
+        while (!initialized.get()) Waiting.wait(250);
         Log.trace("Gui loaded.");
     }
 
