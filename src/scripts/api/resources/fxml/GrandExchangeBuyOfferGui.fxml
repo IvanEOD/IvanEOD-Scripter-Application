@@ -7,13 +7,13 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0"
-            prefWidth="605.0" styleClass="background" xmlns="http://javafx.com/javafx/15"
+            prefWidth="590.0" styleClass="background" xmlns="http://javafx.com/javafx/15"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="scripts.api.gui.controllers.GrandExchangeBuyOfferController">
-    <StackPane layoutX="-5.0" layoutY="8.0" prefHeight="355.0" prefWidth="605.0" AnchorPane.bottomAnchor="0.0"
+    <StackPane layoutX="-5.0" layoutY="8.0" prefHeight="355.0" prefWidth="590.0" AnchorPane.bottomAnchor="0.0"
                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <AnchorPane prefHeight="200.0" prefWidth="200.0">
-            <HBox prefHeight="335.0" prefWidth="615.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+            <HBox prefHeight="335.0" prefWidth="590.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
         </AnchorPane>
         <AnchorPane>
@@ -23,7 +23,7 @@
                     <Font size="19.0"/>
                 </font>
             </JFXButton>
-            <Separator layoutY="265.0" prefHeight="10.0" prefWidth="615.0"/>
+            <Separator layoutY="265.0" prefHeight="10.0" prefWidth="590.0"/>
             <JFXButton fx:id="cancelButton" cancelButton="true" layoutX="37.0" layoutY="300.0" text="Cancel"/>
             <HBox layoutX="20.0" layoutY="122.0" prefHeight="100.0" prefWidth="576.0" spacing="5.0"
                   styleClass="outline-box">
@@ -113,7 +113,7 @@
                                       prefHeight="25.0" prefWidth="112.0" styleClass="text-field-display"
                                       text="Item Id"/>
                         <Text fx:id="itemMarketPriceText" strokeType="OUTSIDE" strokeWidth="0.0" text="0 gp"
-                              textAlignment="CENTER" wrappingWidth="112.876953125"/>
+                              textAlignment="CENTER" wrappingWidth="113"/>
                     </VBox>
                 </VBox>
                 <VBox maxHeight="115.0" minHeight="115.0" prefHeight="115.0" prefWidth="403.0"
