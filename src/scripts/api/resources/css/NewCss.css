@@ -157,6 +157,7 @@
 }
 
 .main-window {
+    -fx-alignment: center;
     -fx-background-color: -background-default;
     -fx-background-radius: 10;
 }
@@ -263,7 +264,7 @@ Text {
     -fx-border-width: 0 2 2 2;
     -fx-border-radius: 0 0 10 10;
     -fx-border-color: -background-paper-darker;
-
+    -fx-max-width: 590;
 
 }
 

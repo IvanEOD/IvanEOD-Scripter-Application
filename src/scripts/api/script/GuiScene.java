@@ -42,6 +42,7 @@ public class GuiScene extends Stage {
         setResizable(false);
 
         root = new VBox();
+
         root.getStyleClass().add("main-window");
 
         //<editor-fold desc="Toolbar">
@@ -148,25 +149,8 @@ public class GuiScene extends Stage {
 
         initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
+        root.setMaxSize(600, 400);
 
-
-    }
-
-    private static <NodeType extends Region> NodeType setup(Supplier<NodeType> nodeSupplier, double width, double height) {
-        var node = nodeSupplier.get();
-        node.setMinSize(width, height);
-        node.setPrefSize(width, height);
-        node.setMaxSize(width, height);
-        return node;
-    }
-
-    private static <NodeType extends Region> NodeType setup(Supplier<NodeType> nodeSupplier, String className, double width, double height) {
-        var node = nodeSupplier.get();
-        node.getStyleClass().add(className);
-        node.setMinSize(width, height);
-        node.setPrefSize(width, height);
-        node.setMaxSize(width, height);
-        return node;
     }
 
     private static class Delta {
