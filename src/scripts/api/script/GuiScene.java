@@ -131,13 +131,15 @@ public class GuiScene extends Stage {
         var viewMenuItem = new MenuItem("View Menu Item");
         viewMenu.getItems().add(viewMenuItem);
         menubar.getMenus().addAll(fileMenu, editMenu, viewMenu);
-
+        menubar.setMaxWidth(600);
         content = new AnchorPane();
         content.setPrefSize(600, 380);
+        content.setMaxSize(600, 380);
         content.getStyleClass().add("content-pane");
 
         var contentArea = new VBox(menubar, content);
         contentArea.setPrefSize(600, 400);
+        contentArea.setMaxSize(600, 400);
         //</editor-fold>
 
         root.getChildren().addAll(toolbar, contentArea);
