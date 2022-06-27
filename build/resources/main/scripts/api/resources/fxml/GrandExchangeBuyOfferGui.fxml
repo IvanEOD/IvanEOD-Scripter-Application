@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="605.0" styleClass="background" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scripts.api.gui.GrandExchangeBuyOfferController">
+   <children>
+      <AnchorPane layoutX="-5.0" layoutY="8.0">
+         <children>
+            <JFXButton fx:id="confirmButton" layoutX="234.0" layoutY="291.0" prefHeight="44.0" prefWidth="147.0" text="Confirm">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </JFXButton>
+            <Separator focusTraversable="false" layoutY="265.0" prefHeight="10.0" prefWidth="615.0" />
+            <JFXButton fx:id="cancelButton" cancelButton="true" layoutX="37.0" layoutY="300.0" text="Cancel" />
+            <HBox layoutX="20.0" layoutY="122.0" prefHeight="100.0" prefWidth="576.0" spacing="5.0" styleClass="outline-box">
+               <children>
+                  <VBox prefWidth="500.0" spacing="5.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="500.0" spacing="5.0">
+                           <children>
+                              <Label text="Quantity:">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="15.0" layoutY="15.0" prefHeight="100.0" prefWidth="500.0" spacing="5.0">
+                           <children>
+                              <JFXButton fx:id="quantitySubtractButton" prefWidth="25.0" text="-" />
+                              <TextField fx:id="quantityField" alignment="CENTER" prefHeight="25.0" prefWidth="200.0" styleClass="text-field-display" text="1" />
+                              <JFXButton fx:id="quantityAddButton" layoutX="21.0" layoutY="10.0" prefWidth="25.0" text="+" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="15.0" layoutY="63.0" prefHeight="100.0" prefWidth="500.0" spacing="5.0">
+                           <children>
+                              <JFXButton fx:id="plus1Button" prefWidth="50.0" text="+1" />
+                              <JFXButton fx:id="plus10Button" layoutX="112.0" layoutY="10.0" prefWidth="50.0" text="+10" />
+                              <JFXButton fx:id="plus100Button" layoutX="143.0" layoutY="10.0" prefWidth="50.0" text="+100" />
+                              <JFXButton fx:id="plus1kButton" layoutX="174.0" layoutY="10.0" prefWidth="50.0" text="+1K" />
+                              <JFXButton fx:id="customQuantityButton" layoutX="205.0" layoutY="10.0" prefWidth="50.0" text="..." />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+                  <VBox layoutX="10.0" layoutY="10.0" prefWidth="500.0" spacing="5.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="500.0" spacing="5.0">
+                           <children>
+                              <Label text="Price per item:">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="15.0" layoutY="15.0" prefHeight="100.0" prefWidth="500.0" spacing="5.0">
+                           <children>
+                              <JFXButton fx:id="priceSubtraceButton" prefWidth="25.0" text="-" />
+                              <TextField fx:id="priceField" alignment="CENTER" prefHeight="25.0" prefWidth="200.0" styleClass="text-field-display" text="1" />
+                              <JFXButton fx:id="priceAddButton" layoutX="21.0" layoutY="10.0" prefWidth="25.0" text="+" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="15.0" layoutY="63.0" prefHeight="100.0" prefWidth="500.0" spacing="5.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="75.0">
+                                 <children>
+                                    <JFXButton fx:id="minus5PercentButton" prefWidth="50.0" text="-5%" />
+                                 </children>
+                              </HBox>
+                              <JFXButton fx:id="resetPriceButton" layoutX="112.0" layoutY="10.0" prefWidth="50.0" text="Reset" />
+                              <JFXButton fx:id="customPriceButton" layoutX="174.0" layoutY="10.0" prefWidth="50.0" text="..." />
+                              <HBox alignment="CENTER_RIGHT" prefWidth="75.0">
+                                 <children>
+                                    <JFXButton fx:id="plus5PercentButton" prefWidth="50.0" text="+5%" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+            <TextField fx:id="totalPriceField" alignment="CENTER" editable="false" focusTraversable="false" layoutX="37.0" layoutY="233.0" prefHeight="25.0" prefWidth="543.0" styleClass="text-field-display" text="0 coins" />
+            <HBox layoutX="20.0" prefHeight="115.0" prefWidth="576.0">
+               <children>
+                  <VBox maxHeight="115.0" minHeight="115.0" prefHeight="115.0" styleClass="outline-box">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="24.0" prefWidth="80.0" spacing="5.0" styleClass="underline-box">
+                           <children>
+                              <Label text="Buy Offer">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <VBox alignment="CENTER" fillWidth="false" prefHeight="90.0" prefWidth="177.0" spacing="2.0">
+                           <children>
+                              <TextField fx:id="itemNameInput" alignment="CENTER" prefHeight="25.0" prefWidth="112.0" styleClass="text-field-display" text="Item Name" />
+                              <TextField fx:id="itemIdInput" alignment="CENTER" layoutX="41.0" layoutY="31.0" prefHeight="25.0" prefWidth="112.0" styleClass="text-field-display" text="Item Id" />
+                              <Text fx:id="itemMarketPriceText" strokeType="OUTSIDE" strokeWidth="0.0" text="0 gp" textAlignment="CENTER" wrappingWidth="112.876953125" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox maxHeight="115.0" minHeight="115.0" prefHeight="115.0" prefWidth="403.0" styleClass="outline-box">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" maxHeight="25.0" minHeight="25.0" prefHeight="25.0" prefWidth="367.0">
+                           <padding>
+                              <Insets left="5.0" right="5.0" />
+                           </padding>
+                           <children>
+                              <Text fx:id="itemDetailsNameText" stroke="#ffffff36" strokeType="OUTSIDE" text="Item Name" wrappingWidth="95.13671875">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="10.0" maxHeight="90.0" minHeight="90.0" prefHeight="90.0" prefWidth="399.0">
+                           <padding>
+                              <Insets left="5.0" right="5.0" />
+                           </padding>
+                           <children>
+                              <Text fx:id="itemDetailsDescriptionText" stroke="#ffffff36" strokeType="OUTSIDE" text="Text" wrappingWidth="355.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -5,7 +5,7 @@
     -primary-color: #7CBBC3;
     -primary-color-lighter: #96C8CF;
     -primary-color-darker: #568288;
-    -primary-contrast-text: rgba(0, 0, 0, 0.87);
+    -primary-contrast-text: rgba(0, 0, 0, 0.71);
 
     -secondary-color: #607d8b;
     -secondary-color-lighter: #78909c;
@@ -51,18 +51,104 @@
 
     -primary-rippler: radial-gradient(focus-angle 0.0deg, focus-distance 0.0%, center 50.0% 50.0%, radius 50.0%, -primary-color 0.0%, -background-paper-lighter 100.0%);
     -underline-primary: linear-gradient(from 0.0% 100.0% to 100.0% 100.0%, transparent 0.0%, -primary-color 15%, -primary-color 85%, transparent 100.0%);
-    -shadow: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50.000000000000014% 50.0%, radius 70%, #ffffffff 0.0%, #ffffffff 30%, #9e9e9eff 65%, #000000ff 100.0%)
+    -shadow: radial-gradient(focus-angle 0.0deg, focus-distance 0.0% , center 50% 50%, radius 70%, #ffffffff 0.0%, #ffffffff 30%, #9e9e9eff 65%, #000000ff 100.0%);
 
+
+
+    -fx-base: -background-primary; /*60 63 65*/
+    -fx-background: -fx-base;
+    -fx-control-inner-background: -background-paper;
+    -fx-control-inner-background-alt: -fx-control-inner-background;
+    -fx-accent: -primary-color;
+    -fx-default-button: -primary-color-darker; /*54 88 128*/
+    -fx-gradient-one: derive(-secondary-color, -20%);
+    -fx-gradient-two: derive(-secondary-color, -10%);
+    -fx-gradient-three: -secondary-color;
+    -fx-gradient-four: derive(-secondary-color, -8%);
+    -fx-gradient-five: derive(-secondary-color, -15%);
+    -fx-focus-color: -primary-color; /*75 110 175*/
+    -fx-faint-focus-color: derive(-primary-color, 30%);
+    -fx-color: -fx-base;
+    -fx-hover-base: -fx-base;
+    -fx-pressed-base: -fx-base;
+    -fx-text-background-color: -text-secondary;
+    -fx-box-border: -background-paper-lighter;
+    -fx-text-box-border: -fx-box-border;
+    -fx-shadow-highlight-color: transparent;
+    -fx-outer-border: -fx-box-border;
+    -fx-inner-border: -fx-base; /*76 80 82*/
+    -fx-inner-border-horizontal: -fx-base;
+    -fx-inner-border-bottomup: -fx-base;
+    -fx-body-color: -fx-base; /*76 80 82*/
+    -fx-body-color-bottomup: -fx-base;
+    -fx-body-color-to-right: -fx-base;
+    -fx-text-base-color: -fx-text-background-color;
+    -fx-text-inner-color: -fx-text-background-color;
+    -fx-mark-color: -fx-text-background-color;
+    -fx-mark-highlight-color: transparent;
+    -fx-selection-bar: -fx-focus-color;
+    -fx-selection-bar-non-focused: derive(-fx-focus-color, -20%);
+    -fx-cell-focus-inner-border: transparent;
+    -fx-focused-text-base-color: -fx-text-background-color;
+    -fx-focused-mark-color: -fx-text-background-color;
 }
 
 * {
     -fx-focus-traversable: false;
     -fx-font-family: -default-font-family;
+    -jfx-checked-color: -primary-color;
+    -jfx-toggle-color: -primary-color-lighter;
+    -jfx-toggle-line-color: -primary-color-darker;
 }
 
+
+
+
 .background {
+    -fx-background-color: dimgrey;
+}
+
+.hyperlink .text {
+    -fx-fill: -info-color;
+}
+
+.hyperlink:visited .text {
+    -fx-fill: -info-color-darker;
+}
+
+.accordion {
     -fx-background-color: transparent;
 }
+
+.titled-pane .content {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.titled-pane .title {
+    -fx-text-fill: text-secondary;
+    -fx-background-color: linear-gradient(to bottom, -background-paper-lighter, -background-paper);
+    -fx-border-color: -background-paper transparent -background-paper-darker transparent;
+    -fx-border-width: 1 0 1 0;
+}
+
+.titled-pane:focused .title {
+    -fx-text-fill: -primary-contrast-text;
+    -fx-background-color: linear-gradient(to bottom, -background-paper-lighter, -background-paper);
+    -fx-border-color: -background-paper transparent -primary-color transparent;
+    -fx-border-width: 1 0 1 0;
+}
+
+.titled-pane:expanded .title .text,
+.titled-pane:focused .title .text {
+    -fx-fill: -primary-color;
+
+}
+.titled-pane .title .text {
+    -fx-fill: -text-secondary;
+
+}
+
 
 .title {
     -fx-text-fill: -text-secondary;
@@ -103,9 +189,62 @@
     -fx-background-color: -background-paper-darker;
 }
 
+.jfx-button {
+    -jfx-button-type: RAISED;
+    -fx-border-color: -primary-color;
+    -fx-text-fill: -primary-color;
+    -fx-border-width: 1;
+    -fx-border-radius: 2;
+    -fx-font-weight: bold;
+
+}
+
+Text {
+    -fx-fill: -text-primary;
+    -fx-stroke-width: 1;
+    -fx-stroke-top: outside;
+    -fx-stroke-line-cap: square;
+    -fx-stroke-line-join: miter;
+    -fx-stroke: -background-default;
+}
+
+.text-field-display {
+
+    -fx-text-fill: -text-primary;
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+
+}
+
+.outline-box {
+    -fx-border-color: -divider-color;
+    -fx-border-width: 1;
+}
+
+.underline-box {
+    -fx-border-color: -divider-color;
+    -fx-border-width: 0 0 1 0;
+}
+
+.add-button {
+    -fx-border-style: inset;
+}
+
+.jfx-button:default {
+
+    -top-color: derive(-primary-color, 20%);
+    -bottom-color: derive(-primary-color, -20%);
+    -fx-text-fill: -primary-contrast-text;
+    -fx-background-color: linear-gradient(from 0.0% 0.0% to 0.0% 100.0%, -top-color 0.0%, -primary-color 15%, -primary-color 85%, -bottom-color 100.0%);
+}
+
+.jfx-button:default:cancel {
+
+}
+
 .jfx-button:cancel {
-    -fx-background-color: -error-color;
-    -fx-text-fill: -error-contrast-text;
+    -fx-border-color: -error-color;
+    -fx-text-fill: -error-color;
 }
 
 .jfx-button:hover {

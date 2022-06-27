@@ -10,7 +10,6 @@
     -darcula-tab-pane-focused-color: #439EB8;
     -darcula-titled-pane-focused-color-top: #434f60;
     -darcula-titled-pane-focused-color-bottom: #414c5d;
-
     -darcula-titled-pane-border-focused-bottom: #2a313c;
 
     -darkgray: #4c5052;
@@ -47,36 +46,24 @@
 
     /*JavaFX color palette*/
     -fx-base: -darcula-base; /*60 63 65*/
-
     -fx-background: -fx-base;
-
     -fx-control-inner-background: -darcula-text-input-background;
     -fx-control-inner-background-alt: -fx-control-inner-background;
-
     -fx-accent: -darcula-accent;
-
     -fx-default-button: #365880; /*54 88 128*/
-
     -fx-gradient-one: #60AFFF32;
     -fx-gradient-two: #60afff64;
     -fx-gradient-three: #60afffb4;
     -fx-gradient-four: #60afff78;
     -fx-gradient-five: #60afff46;
-
     -fx-focus-color: -darcula-focus-color; /*75 110 175*/
     -fx-faint-focus-color: transparent;
-
     -fx-color: -fx-base;
-
     -fx-hover-base: -fx-base;
     -fx-pressed-base: -fx-base;
-
     -fx-text-background-color: -darcula-text;
-
     -fx-box-border: -darcula-border-color;
-
     -fx-text-box-border: -fx-box-border;
-
     -fx-shadow-highlight-color: transparent;
     -fx-outer-border: -fx-box-border;
     -fx-inner-border: -fx-base; /*76 80 82*/
@@ -85,22 +72,16 @@
     -fx-body-color: -fx-base; /*76 80 82*/
     -fx-body-color-bottomup: -fx-base;
     -fx-body-color-to-right: -fx-base;
-
     -fx-text-base-color: -fx-text-background-color;
     -fx-text-inner-color: -fx-text-background-color;
-
     -fx-mark-color: -fx-text-background-color;
     -fx-mark-highlight-color: transparent;
-
     -fx-selection-bar: -fx-focus-color;
     -fx-selection-bar-non-focused: #0d293e;
-
     /*-fx-cell-hover-color: unused;*/
     -fx-cell-focus-inner-border: transparent;
-
     /*-fx-page-bullet-border: unused;*/
     /*-fx-page-indicator-hover-border: unused;*/
-
     -fx-focused-text-base-color: -fx-text-background-color;
     -fx-focused-mark-color: -fx-text-background-color;
 
