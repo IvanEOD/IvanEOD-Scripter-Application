@@ -48,11 +48,8 @@ public class ScriptGui extends Application {
     private Stage stage;
     private Scene scene;
     private AtomicBoolean initialized = new AtomicBoolean(false);
-
     private GuiScene guiScene;
-
     private final Runnable onPreEndingListener = this::onPreEnding;
-    private final Delta dragDelta = new Delta();
 
     public ScriptGui(ScriptExtension script) {
         this.script = script;
@@ -70,14 +67,11 @@ public class ScriptGui extends Application {
                     start(guiScene);
                 } catch (Exception e) {
                     Log.error("Error starting GUI", e);
-//                    throw new RuntimeException(e);
                 }
             });
         });
         waitForInit();
     }
-
-
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -89,21 +83,8 @@ public class ScriptGui extends Application {
         Log.trace("Gui Starting...");
 
         guiScene.buildContent();
-        var toolbar = guiScene.getToolbar();
         stage = guiScene;
         scene = guiScene.getScene();
-        stage.initStyle(StageStyle.TRANSPARENT);
-        scene.setFill(Color.TRANSPARENT);
-
-        toolbar.setOnMousePressed(event -> {
-            dragDelta.x = stage.getX() - event.getScreenX();
-            dragDelta.y = stage.getY() - event.getScreenY();
-        });
-
-        toolbar.setOnMouseDragged(event -> {
-            stage.setX(event.getScreenX() + dragDelta.x);
-            stage.setY(event.getScreenY() + dragDelta.y);
-        });
 
         File fxmlFile = GitHub.getFxml(fxmlName);
         cssFile = GitHub.getCss(cssName);
@@ -111,12 +92,8 @@ public class ScriptGui extends Application {
         if (cssFile == null) throw new RuntimeException("Stylesheet failed to load.");
 
         stage.setTitle(Utility.toTitleCase(title));
-        stage.setResizable(false);
         stage.setOnCloseRequest((event) -> onGuiClosed());
         stage.setOnShown(event -> onGuiOpened());
-        guiScene.getMinimizeButton().setOnAction(event -> stage.setIconified(true));
-        guiScene.getCloseButton().setOnAction(event -> stage.close());
-//        stage.setScene(scene);
 
         FXMLLoader loader = new FXMLLoader();
         loader.setClassLoader(getClass().getClassLoader());
@@ -138,12 +115,9 @@ public class ScriptGui extends Application {
             } else Log.info("Gui Controller loaded.");
         }
 
-
+        guiScene.getContent().getChildren().add(box);
         controller.setGui(this);
         controller.setScript(script);
-//        scene = new Scene(box);
-        scene.setFill(Color.TRANSPARENT);
-//        scene.getStylesheets().clear();
         scene.getStylesheets().add(cssFile.toURI().toURL().toExternalForm());
         scene.getRoot().applyCss();
         stage.setScene(scene);
@@ -212,11 +186,9 @@ public class ScriptGui extends Application {
     public boolean isShowing() {
         return showing.get();
     }
-
     public void startScript() {
         script.onGuiStartButton();
     }
-
     private void onPreEnding() {
         ScriptListening.removePreEndingListener(onPreEndingListener);
         close();
@@ -225,39 +197,6 @@ public class ScriptGui extends Application {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-
-    private static class WindowButtons extends HBox {
-
-        public WindowButtons() {
-            JFXButton closeButton = new JFXButton("X");
-            JFXButton minimizeButton = new JFXButton("_");
-            this.setAlignment(Pos.CENTER_RIGHT);
-            this.setSpacing(1);
-            closeButton.setOnAction(event -> {
-                Platform.exit();
-            });
-            minimizeButton.setOnAction(event -> {
-                Platform.runLater(() -> {
-                    try {
-                        var stage = (Stage) minimizeButton.getScene().getWindow();
-                        stage.setIconified(true);
-                    } catch (Exception e) {
-                        Log.error("Error minimizing window.");
-                    }
-                });
-            });
-            this.getChildren().addAll(minimizeButton, closeButton);
-
-        }
-
-
-    }
-
-    private static class Delta {
-        private double x;
-        private double y;
     }
 
 

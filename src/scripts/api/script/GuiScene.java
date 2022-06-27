@@ -28,12 +28,12 @@ public class GuiScene extends Stage {
     private ToolBar toolbar;
     private JFXButton minimizeButton;
     private JFXButton closeButton;
+    private final Delta dragDelta = new Delta();
+
+    private AnchorPane content;
 
     public GuiScene() {
         super();
-        initStyle(StageStyle.TRANSPARENT);
-
-
     }
 
     public void buildContent() {
@@ -93,6 +93,9 @@ public class GuiScene extends Stage {
         minimizeButton.setOnAction(e -> ((Stage) minimizeButton.getScene().getWindow()).setIconified(true));
         minimizeButton.setAlignment(Pos.CENTER);
 
+        minimizeButton.setOnAction(event -> setIconified(true));
+        closeButton.setOnAction(event -> close());
+
         var toolbarRight = new HBox(1, minimizeButton, closeButton);
         toolbarRight.setPrefSize(38, 21);
         toolbarRight.setMaxSize(38, 21);
@@ -100,6 +103,17 @@ public class GuiScene extends Stage {
 
         toolbarHbox.getChildren().addAll(toolbarLeft, toolbarRight);
         toolbar.getItems().add(toolbarHbox);
+
+        toolbar.setOnMousePressed(event -> {
+            dragDelta.x = getX() - event.getScreenX();
+            dragDelta.y = getY() - event.getScreenY();
+        });
+
+        toolbar.setOnMouseDragged(event -> {
+            setX(event.getScreenX() + dragDelta.x);
+            setY(event.getScreenY() + dragDelta.y);
+        });
+
         //</editor-fold>
 
         //<editor-fold desc="Content Area">
@@ -118,7 +132,7 @@ public class GuiScene extends Stage {
         viewMenu.getItems().add(viewMenuItem);
         menubar.getMenus().addAll(fileMenu, editMenu, viewMenu);
 
-        var content = new AnchorPane();
+        content = new AnchorPane();
         content.setPrefSize(600, 380);
         content.getStyleClass().add("content-pane");
 
@@ -129,6 +143,9 @@ public class GuiScene extends Stage {
         root.getChildren().addAll(toolbar, contentArea);
         var scene = new Scene(root, Color.TRANSPARENT);
         setScene(scene);
+
+        initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
 
 
     }
@@ -148,6 +165,11 @@ public class GuiScene extends Stage {
         node.setPrefSize(width, height);
         node.setMaxSize(width, height);
         return node;
+    }
+
+    private static class Delta {
+        private double x;
+        private double y;
     }
 
 

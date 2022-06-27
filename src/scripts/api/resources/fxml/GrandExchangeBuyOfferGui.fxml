@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="605.0" styleClass="background" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scripts.api.gui.controllers.GrandExchangeBuyOfferController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="605.0" styleClass="background" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scripts.api.gui.GrandExchangeBuyOfferController">
    <children>
       <AnchorPane layoutX="-5.0" layoutY="8.0">
          <children>
@@ -39,7 +39,7 @@
                         <HBox alignment="CENTER" layoutX="15.0" layoutY="15.0" prefHeight="100.0" prefWidth="500.0" spacing="5.0">
                            <children>
                               <JFXButton fx:id="quantitySubtractButton" prefWidth="25.0" text="-" />
-                              <JFXTextField fx:id="quantityField" alignment="CENTER" prefHeight="25.0" prefWidth="200.0" styleClass="text-field-display" text="1" />
+                              <TextField fx:id="quantityField" alignment="CENTER" prefHeight="25.0" prefWidth="200.0" styleClass="text-field-display" text="1" />
                               <JFXButton fx:id="quantityAddButton" layoutX="21.0" layoutY="10.0" prefWidth="25.0" text="+" />
                            </children>
                         </HBox>
@@ -71,7 +71,7 @@
                         <HBox alignment="CENTER" layoutX="15.0" layoutY="15.0" prefHeight="100.0" prefWidth="500.0" spacing="5.0">
                            <children>
                               <JFXButton fx:id="priceSubtraceButton" prefWidth="25.0" text="-" />
-                              <JFXTextField fx:id="priceField" alignment="CENTER" prefHeight="25.0" prefWidth="200.0" styleClass="text-field-display" text="1" />
+                              <TextField fx:id="priceField" alignment="CENTER" prefHeight="25.0" prefWidth="200.0" styleClass="text-field-display" text="1" />
                               <JFXButton fx:id="priceAddButton" layoutX="21.0" layoutY="10.0" prefWidth="25.0" text="+" />
                            </children>
                         </HBox>
@@ -98,7 +98,7 @@
                   </VBox>
                </children>
             </HBox>
-            <JFXTextField fx:id="totalPriceField" alignment="CENTER" editable="false" focusTraversable="false" layoutX="37.0" layoutY="233.0" prefHeight="25.0" prefWidth="543.0" styleClass="text-field-display" text="0 coins" />
+            <TextField fx:id="totalPriceField" alignment="CENTER" editable="false" focusTraversable="false" layoutX="37.0" layoutY="233.0" prefHeight="25.0" prefWidth="543.0" styleClass="text-field-display" text="0 coins" />
             <HBox layoutX="20.0" prefHeight="115.0" prefWidth="576.0">
                <children>
                   <VBox maxHeight="115.0" minHeight="115.0" prefHeight="115.0" styleClass="outline-box">
@@ -114,7 +114,8 @@
                         </HBox>
                         <VBox alignment="CENTER" fillWidth="false" prefHeight="90.0" prefWidth="177.0" spacing="2.0">
                            <children>
-                              <JFXTextField fx:id="itemNameInput" alignment="CENTER" prefHeight="25.0" prefWidth="112.0" styleClass="text-field-display" text="Item Name" />
+                              <TextField fx:id="itemNameInput" alignment="CENTER" prefHeight="25.0" prefWidth="112.0" styleClass="text-field-display" text="Item Name" />
+                              <TextField fx:id="itemIdInput" alignment="CENTER" layoutX="41.0" layoutY="31.0" prefHeight="25.0" prefWidth="112.0" styleClass="text-field-display" text="Item Id" />
                               <Text fx:id="itemMarketPriceText" strokeType="OUTSIDE" strokeWidth="0.0" text="0 gp" textAlignment="CENTER" wrappingWidth="112.876953125" />
                            </children>
                         </VBox>

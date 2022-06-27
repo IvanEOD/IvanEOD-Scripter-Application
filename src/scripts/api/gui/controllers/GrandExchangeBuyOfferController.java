@@ -8,21 +8,23 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.text.Text;
+import scripts.api.concurrency.DebounceManager;
+import scripts.api.concurrency.Debouncer;
 import scripts.api.script.ScriptGuiController;
 
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /* Written by IvanEOD 6/26/2022, at 2:35 PM */
 public class GrandExchangeBuyOfferController extends ScriptGuiController {
-
 
     private final SimpleIntegerProperty pricePer = new SimpleIntegerProperty(0);
     private final SimpleIntegerProperty quantity = new SimpleIntegerProperty(0);
     private final SimpleIntegerProperty totalPrice = new SimpleIntegerProperty(0);
     private final SimpleIntegerProperty itemMarketPrice = new SimpleIntegerProperty(0);
+    private final SimpleIntegerProperty itemId = new SimpleIntegerProperty(0);
     private final SimpleStringProperty itemName = new SimpleStringProperty("");
     private final SimpleStringProperty itemDescription = new SimpleStringProperty("");
-    private final SimpleStringProperty itemNameInputValue = new SimpleStringProperty("");
     private final SimpleStringProperty customPriceInput = new SimpleStringProperty("");
     private final SimpleStringProperty customQuantityInput = new SimpleStringProperty("");
 
@@ -34,9 +36,7 @@ public class GrandExchangeBuyOfferController extends ScriptGuiController {
     @FXML
     private JFXButton plus10Button;
     @FXML
-    private Text itemDetailsDescriptionText;
-    @FXML
-    private JFXButton priceSubtraceButton;
+    private JFXButton priceSubtractButton;
     @FXML
     private JFXButton customPriceButton;
     @FXML
@@ -46,7 +46,7 @@ public class GrandExchangeBuyOfferController extends ScriptGuiController {
     @FXML
     private JFXTextField itemNameInput;
     @FXML
-    private Text itemDetailsNameText;
+    private JFXTextField itemIdInput;
     @FXML
     private JFXButton customQuantityButton;
     @FXML
@@ -75,35 +75,50 @@ public class GrandExchangeBuyOfferController extends ScriptGuiController {
     @Override
     public void setupComponents() {
 
+        //<editor-fold desc="Quantity Input Connections">
         quantityAddButton.setOnAction(event -> quantity.add(1));
         quantitySubtractButton.setOnAction(event -> quantity.subtract(1));
         plus1Button.setOnAction(event -> quantity.add(1));
         plus10Button.setOnAction(event -> quantity.add(10));
         plus100Button.setOnAction(event -> quantity.add(100));
         plus1kButton.setOnAction(event -> quantity.add(1000));
-
-        priceAddButton.setOnAction(event -> pricePer.add(1));
-        priceSubtraceButton.setOnAction(event -> pricePer.subtract(1));
-        plus5PercentButton.setOnAction(event -> pricePer.multiply(1.05));
-        minus5PercentButton.setOnAction(event -> pricePer.multiply(0.95));
-        resetPriceButton.setOnAction(event -> pricePer.set(itemMarketPrice.get()));
-
-        setupInputField(quantityField);
-        setupInputField(priceField);
-
         quantity.addListener((observable, oldValue, newValue) -> {
             if (quantity.asString().isNotEqualTo(quantityField.getText()).get()) {
                 quantityField.setText(newValue.toString());
                 updateTotalPrice();
             }
         });
+        setupInputField(quantityField);
+        //</editor-fold>
 
+        //<editor-fold desc="Price Input Connections">
+        priceAddButton.setOnAction(event -> pricePer.add(1));
+        priceSubtractButton.setOnAction(event -> pricePer.subtract(1));
+        plus5PercentButton.setOnAction(event -> pricePer.multiply(1.05));
+        minus5PercentButton.setOnAction(event -> pricePer.multiply(0.95));
+        resetPriceButton.setOnAction(event -> pricePer.set(itemMarketPrice.get()));
         pricePer.addListener((observable, oldValue, newValue) -> {
             if (pricePer.asString().isNotEqualTo(priceField.getText()).get()) {
                 priceField.setText(newValue.toString());
                 updateTotalPrice();
             }
         });
+        setupInputField(priceField);
+        //</editor-fold>
+
+        //<editor-fold desc="Text Update Connections">
+        itemMarketPrice.addListener((observable, oldValue, newValue) -> {
+            if (itemMarketPrice.asString().isNotEqualTo(priceField.getText()).get()) {
+                priceField.setText(newValue.toString());
+                updateTotalPrice();
+            }
+        });
+        itemNameInput.textProperty().addListener((observable, oldValue, newValue) -> onItemNameChanged());
+        itemIdInput.textProperty().addListener((observable, oldValue, newValue) -> onItemIdChanged());
+
+        itemMarketPriceText.textProperty().bind(itemMarketPrice.asString());
+
+        //</editor-fold>
 
 
 
@@ -142,5 +157,25 @@ public class GrandExchangeBuyOfferController extends ScriptGuiController {
         });
 
     }
+
+    private void onItemNameChanged() {
+        DebounceManager.call(itemNameDebouncer, 500, TimeUnit.MILLISECONDS);
+    }
+
+    private void onItemIdChanged() {
+        DebounceManager.call(itemIdDebouncer, 500, TimeUnit.MILLISECONDS);
+    }
+
+    private final Debouncer itemIdDebouncer = () -> {
+        var idInputValue= itemIdInput.getText();
+        int id;
+        if (idInputValue.isEmpty()) return;
+        else id = Integer.parseInt(idInputValue);
+        if (itemId.get() != id) itemId.set(id);
+    };
+
+    private final Debouncer itemNameDebouncer = () -> {
+        if (!Objects.equals(itemName.get(), itemNameInput.getText())) itemName.set(itemNameInput.getText());
+    };
 
 }
