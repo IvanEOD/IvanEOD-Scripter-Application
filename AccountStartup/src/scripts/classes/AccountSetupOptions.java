@@ -5,8 +5,8 @@ package scripts.classes;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.tribot.script.sdk.Options;
-import scripts.api.classes.Directory;
-import scripts.api.classes.StorableClass;
+import scripts.appApi.classes.Directory;
+import scripts.appApi.classes.StorableClass;
 
 import java.util.ArrayList;
 import java.util.List;

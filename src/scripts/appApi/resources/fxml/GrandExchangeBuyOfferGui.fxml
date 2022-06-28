@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0"
+            prefWidth="590.0" styleClass="background" xmlns="http://javafx.com/javafx/15"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="scripts.appApi.gui.controllers.GrandExchangeBuyOfferController">
+    <StackPane layoutX="-5.0" layoutY="8.0" prefHeight="355.0" prefWidth="590.0" AnchorPane.bottomAnchor="0.0"
+               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <HBox prefHeight="335.0" prefWidth="590.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+        </AnchorPane>
+        <AnchorPane>
+            <JFXButton fx:id="confirmButton" layoutX="234.0" layoutY="291.0" prefHeight="44.0" prefWidth="147.0"
+                       text="Confirm">
+                <font>
+                    <Font size="19.0"/>
+                </font>
+            </JFXButton>
+            <Separator layoutY="265.0" prefHeight="10.0" prefWidth="590.0"/>
+            <JFXButton fx:id="cancelButton" cancelButton="true" layoutX="37.0" layoutY="300.0" text="Cancel"/>
+            <HBox layoutX="20.0" layoutY="122.0" prefHeight="100.0" prefWidth="576.0" spacing="5.0"
+                  styleClass="outline-box">
+                <VBox prefWidth="500.0" spacing="5.0">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </padding>
+                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="500.0" spacing="5.0">
+                        <Label text="Quantity:">
+                            <font>
+                                <Font name="System Bold" size="15.0"/>
+                            </font>
+                        </Label>
+                    </HBox>
+                    <HBox alignment="CENTER" layoutX="15.0" layoutY="15.0" prefHeight="100.0"
+                          prefWidth="500.0" spacing="5.0">
+                        <JFXButton fx:id="quantitySubtractButton" prefWidth="25.0" text="-"/>
+                        <JFXTextField fx:id="quantityField" alignment="CENTER" prefHeight="25.0"
+                                      prefWidth="200.0" styleClass="text-field-display" text="1"/>
+                        <JFXButton fx:id="quantityAddButton" layoutX="21.0" layoutY="10.0" prefWidth="25.0"
+                                   text="+"/>
+                    </HBox>
+                    <HBox alignment="CENTER" layoutX="15.0" layoutY="63.0" prefHeight="100.0"
+                          prefWidth="500.0" spacing="5.0">
+                        <JFXButton fx:id="plus1Button" prefWidth="50.0" text="+1"/>
+                        <JFXButton fx:id="plus10Button" layoutX="112.0" layoutY="10.0" prefWidth="50.0"
+                                   text="+10"/>
+                        <JFXButton fx:id="plus100Button" layoutX="143.0" layoutY="10.0" prefWidth="50.0"
+                                   text="+100"/>
+                        <JFXButton fx:id="plus1kButton" layoutX="174.0" layoutY="10.0" prefWidth="50.0"
+                                   text="+1K"/>
+                        <JFXButton fx:id="customQuantityButton" layoutX="205.0" layoutY="10.0" prefWidth="50.0"
+                                   text="..."/>
+                    </HBox>
+                </VBox>
+                <VBox layoutX="10.0" layoutY="10.0" prefWidth="500.0" spacing="5.0">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </padding>
+                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="500.0" spacing="5.0">
+                        <Label text="Price per item:">
+                            <font>
+                                <Font name="System Bold" size="15.0"/>
+                            </font>
+                        </Label>
+                    </HBox>
+                    <HBox alignment="CENTER" layoutX="15.0" layoutY="15.0" prefHeight="100.0" prefWidth="500.0"
+                          spacing="5.0">
+                        <JFXButton fx:id="priceSubtractButton" prefWidth="25.0" text="-"/>
+                        <JFXTextField fx:id="priceField" alignment="CENTER" prefHeight="25.0" prefWidth="200.0"
+                                      styleClass="text-field-display" text="1"/>
+                        <JFXButton fx:id="priceAddButton" layoutX="21.0" layoutY="10.0" prefWidth="25.0"
+                                   text="+"/>
+                    </HBox>
+                    <HBox alignment="CENTER" layoutX="15.0" layoutY="63.0" prefHeight="100.0" prefWidth="500.0"
+                          spacing="5.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="27.0" prefWidth="75.0">
+                            <JFXButton fx:id="minus5PercentButton" prefWidth="50.0" text="-5%"/>
+                        </HBox>
+                        <JFXButton fx:id="resetPriceButton" layoutX="112.0" layoutY="10.0" prefWidth="50.0"
+                                   text="Reset"/>
+                        <JFXButton fx:id="customPriceButton" layoutX="174.0" layoutY="10.0" prefWidth="50.0"
+                                   text="..."/>
+                        <HBox alignment="CENTER_RIGHT" prefWidth="75.0">
+                            <JFXButton fx:id="plus5PercentButton" prefWidth="50.0" text="+5%"/>
+                        </HBox>
+                    </HBox>
+                </VBox>
+            </HBox>
+            <JFXTextField fx:id="totalPriceField" alignment="CENTER" editable="false" focusTraversable="false"
+                          layoutX="37.0" layoutY="233.0" prefHeight="25.0" prefWidth="543.0"
+                          styleClass="text-field-display" text="0 coins"/>
+            <HBox layoutX="20.0" prefHeight="115.0" prefWidth="576.0">
+                <VBox maxHeight="115.0" minHeight="115.0" prefHeight="115.0" styleClass="outline-box">
+                    <HBox alignment="CENTER" prefHeight="24.0" prefWidth="80.0" spacing="5.0"
+                          styleClass="underline-box">
+                        <Label text="Buy Offer">
+                            <font>
+                                <Font name="System Bold" size="15.0"/>
+                            </font>
+                        </Label>
+                    </HBox>
+                    <VBox alignment="CENTER" fillWidth="false" prefHeight="90.0" prefWidth="177.0" spacing="2.0">
+                        <JFXTextField fx:id="itemNameInput" alignment="CENTER" prefHeight="25.0"
+                                      prefWidth="112.0" styleClass="text-field-display" text="Item Name"/>
+                        <JFXTextField fx:id="itemIdInput" alignment="CENTER" layoutX="41.0" layoutY="31.0"
+                                      prefHeight="25.0" prefWidth="112.0" styleClass="text-field-display"
+                                      text="Item Id"/>
+                        <Text fx:id="itemMarketPriceText" strokeType="OUTSIDE" strokeWidth="0.0" text="0 gp"
+                              textAlignment="CENTER" wrappingWidth="113"/>
+                    </VBox>
+                </VBox>
+                <VBox maxHeight="115.0" minHeight="115.0" prefHeight="115.0" prefWidth="403.0"
+                      styleClass="outline-box">
+                    <padding>
+                        <Insets bottom="1.0" left="1.0" right="1.0" top="1.0"/>
+                    </padding>
+                    <SplitPane dividerPositions="0.3, 0.5" prefHeight="125.0" prefWidth="394.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                            <JFXListView layoutX="-40.0" layoutY="-138.0" prefHeight="109.0"
+                                         prefWidth="119.0" AnchorPane.bottomAnchor="0.0"
+                                         AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                         AnchorPane.topAnchor="0.0"/>
+                        </AnchorPane>
+                        <AnchorPane maxWidth="65.0" minHeight="0.0" minWidth="65.0" prefHeight="107.0"
+                                    prefWidth="65.0">
+                            <VBox alignment="CENTER" fillWidth="false" maxWidth="65.0" minWidth="65.0"
+                                  prefHeight="107.0" prefWidth="65.0">
+                                <padding>
+                                    <Insets bottom="2.0"/>
+                                </padding>
+                                <JFXButton maxHeight="25.0" prefHeight="25.0" text="Button"/>
+                                <JFXButton layoutX="18.0" layoutY="50.0" maxHeight="25.0"
+                                           prefHeight="25.0"/>
+                                <JFXButton layoutX="18.0" layoutY="64.0" maxHeight="25.0"
+                                           prefHeight="25.0"/>
+                                <JFXButton layoutX="18.0" layoutY="77.0" maxHeight="25.0"/>
+                            </VBox>
+                        </AnchorPane>
+                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0"
+                                    prefHeight="160.0" prefWidth="100.0">
+                            <JFXListView layoutX="-2.0" layoutY="-136.0" prefHeight="109.0" prefWidth="200.0"
+                                         AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-2.0"
+                                         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                        </AnchorPane>
+                    </SplitPane>
+                </VBox>
+            </HBox>
+        </AnchorPane>
+    </StackPane>
+</AnchorPane>

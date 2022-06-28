@@ -1,7 +1,7 @@
 package scripts;
 
-import scripts.api.script.ScriptConfiguration;
-import scripts.api.script.ScriptExtension;
+import scripts.appApi.script.ScriptConfiguration;
+import scripts.appApi.script.ScriptExtension;
 
 import java.util.function.UnaryOperator;
 

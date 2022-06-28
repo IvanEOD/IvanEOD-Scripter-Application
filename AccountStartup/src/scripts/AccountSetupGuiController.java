@@ -14,9 +14,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import org.tribot.script.sdk.Log;
 import org.tribot.script.sdk.Options;
-import scripts.api.classes.FileHelper;
-import scripts.api.classes.GitHub;
-import scripts.api.script.ScriptGuiController;
+import scripts.appApi.classes.GitHub;
+import scripts.appApi.script.ScriptGuiController;
 import scripts.classes.AccountSetupOptions;
 
 import java.net.URL;
