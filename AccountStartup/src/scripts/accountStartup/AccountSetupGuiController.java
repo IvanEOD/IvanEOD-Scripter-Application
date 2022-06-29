@@ -1,4 +1,4 @@
-package scripts;
+package scripts.accountStartup;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
@@ -16,7 +16,7 @@ import org.tribot.script.sdk.Log;
 import org.tribot.script.sdk.Options;
 import scripts.appApi.classes.GitHub;
 import scripts.appApi.script.ScriptGuiController;
-import scripts.classes.AccountSetupOptions;
+import scripts.accountStartup.classes.AccountSetupOptions;
 
 import java.net.URL;
 import java.util.ResourceBundle;

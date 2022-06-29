@@ -1,4 +1,4 @@
-package scripts;
+package scripts.accountStartup;
 
 import org.tribot.script.sdk.script.TribotScriptManifest;
 import scripts.appApi.script.ScriptConfiguration;

@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane style="-fx-background-color: transparent;" styleClass="background" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scripts.AccountSetupController">
+<AnchorPane style="-fx-background-color: transparent;" styleClass="background" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scripts.accountStartup.AccountSetupController">
    <children>
       <VBox prefHeight="434.0" prefWidth="600.0" styleClass="main-window">
          <children>

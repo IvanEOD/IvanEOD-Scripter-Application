@@ -1,4 +1,4 @@
-package scripts.classes;
+package scripts.accountStartup.classes;
 
 /* Written by IvanEOD 6/24/2022, at 7:51 AM */
 

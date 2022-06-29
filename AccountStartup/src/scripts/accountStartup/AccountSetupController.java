@@ -1,4 +1,4 @@
-package scripts;
+package scripts.accountStartup;
 
 import scripts.appApi.script.ScriptGuiController;
 
