@@ -18,7 +18,7 @@ import static scripts.appApi.classes.Utility.roll;
 /* Written by IvanEOD 6/28/2022, at 9:42 PM */
 public class TutorialIslandHelper {
 
-    private static final int MAX_CHARACTERS_IN_NAME = 12;
+    public static final int MAX_CHARACTERS_IN_NAME = 12;
 
     public static TutorialIslandState getCurrentState() {
         return TutorialIslandState.getCurrentState();
@@ -37,7 +37,7 @@ public class TutorialIslandHelper {
                 .contains(text);
     }
 
-    private static boolean tryName(Widget widget, String name) {
+    public static boolean tryName(Widget widget, String name) {
         AtomicBoolean success = new AtomicBoolean(false);
         AtomicBoolean nameTaken = new AtomicBoolean(false);
         var currentText = widget.getText().orElse("");
@@ -62,28 +62,28 @@ public class TutorialIslandHelper {
         return success.get();
     }
 
-    private static boolean clickSetName() {
+    public static boolean clickSetName() {
         Log.trace("Clicking set name");
         return getSetNameButton().map(button -> button.click("Set name")).orElse(false);
     }
 
-    private static Optional<Widget> getSetNameButton() {
+    public static Optional<Widget> getSetNameButton() {
         return getWidget(558, 18);
     }
 
-    private static Optional<Widget> getWidget(int... path) {
+    public static Optional<Widget> getWidget(int... path) {
         return Query.widgets().inIndexPath(path).findFirst();
     }
 
-    private static boolean characterCreatorIsOpen() {
+    public static boolean characterCreatorIsOpen() {
         return getCharacterCreator().isPresent();
     }
 
-    private static Optional<Widget> getCharacterCreator() {
+    public static Optional<Widget> getCharacterCreator() {
         return getWidget(679, 3);
     }
 
-    private static Optional<Widget> getNameTextBox() {
+    public static Optional<Widget> getNameTextBox() {
         return getWidget(558, 13);
     }
 
@@ -180,6 +180,8 @@ public class TutorialIslandHelper {
         public boolean isVisible() {
             return getWidget().isPresent();
         }
+
+        public boolean isNotVisible() { return !isVisible(); }
 
         public Optional<Widget> getWidget() {
             return Query.widgets().inIndexPath(path).findFirst();

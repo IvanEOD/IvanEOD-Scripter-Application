@@ -1,6 +1,7 @@
 package scripts.accountStartup.tutorialIsland;
 
 import org.tribot.script.sdk.Log;
+import org.tribot.script.sdk.Waiting;
 import org.tribot.script.sdk.Widgets;
 import org.tribot.script.sdk.frameworks.behaviortree.nodes.SelectorNode;
 import org.tribot.script.sdk.frameworks.behaviortree.nodes.SequenceNode;
@@ -33,7 +34,7 @@ public class TutorialIslandNodes {
         return sequence(
 //                condition(() -> getCurrentState().equals(TutorialIslandState.GUIDE_ROOM)),
 //                selector(
-//                        condition(() ->)
+//                        condition(() -> )
 //                )
 
         );
@@ -41,15 +42,20 @@ public class TutorialIslandNodes {
     }
 
 
-    private final SequenceNode selectName = sequence(
-//            condition(GuideRoomWidgets.NAME_TEXT_BOX::isVisible),
-//            condition(() -> {
-//                AtomicBoolean shouldCancel = new AtomicBoolean(false);
-//                Log.trace("Creating name");
-//                getWidget(558, 12).ifPresent(widget -> shouldCancel.set(!tryName(widget, )));
-//            })
-
-    );
+    private static SelectorNode selectName(String username) {
+        return selector(
+                condition(GuideRoomWidgets.NAME_TEXT_BOX::isNotVisible),
+                condition(() -> {
+                    AtomicBoolean shouldCancel = new AtomicBoolean(false);
+                    Log.trace("Creating name");
+                    getWidget(558, 12).ifPresent(widget -> shouldCancel.set(!tryName(widget, username)));
+                    if (shouldCancel.get()) return true;
+                    shouldCancel.set(clickSetName());
+                    Waiting.waitUntil(GuideRoomWidgets.CHARACTER_CREATOR_SCREEN::isVisible);
+                    return true;
+                })
+        );
+    }
 
 
 }

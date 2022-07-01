@@ -1,6 +1,8 @@
 package scripts.accountStartup;
 
+import org.tribot.script.sdk.Log;
 import org.tribot.script.sdk.script.TribotScriptManifest;
+import scripts.accountStartup.nodes.PurchasingBond;
 import scripts.appApi.script.ScriptConfiguration;
 import scripts.appApi.script.ScriptExtension;
 
@@ -18,6 +20,14 @@ public class AccountSetup extends ScriptExtension {
     @Override
     protected void onMainLoop() {
 
+        var purchasingBond = new PurchasingBond().getSequence();
+
+        var success = purchasingBond.tick();
+
+        Log.info("Success = " + success);
+
+
+        quit();
     }
 
     @Override
@@ -27,7 +37,8 @@ public class AccountSetup extends ScriptExtension {
 
     @Override
     protected UnaryOperator<ScriptConfiguration> updateScriptConfiguration() {
-        return config -> config.cssName("NewCss").fxmlName("GrandExchangeBuyOfferGui");
+//        return config -> config.cssName("NewCss").fxmlName("GrandExchangeBuyOfferGui");
+        return config -> config;
     }
 
 
